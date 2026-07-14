@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 2 Recap — AI-Assisted Development Program — LVT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f9fc;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:#eef1f7;border:1px solid #dce2ee;border-radius:4px;padding:1px 5px;color:#262533;white-space:nowrap}
+.cover{background:#262533;min-height:100vh;display:flex;flex-direction:column;padding:44px 60px 34px}
+.lock{background:#fff;border-radius:10px;padding:12px 22px;display:inline-flex;align-items:center;gap:18px;align-self:flex-start}
+.lock img.acc{height:26px} .lock .div{width:1px;height:30px;background:#dce2ee} .lock img.cli{height:26px}
+.cover-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cover-body h1{font-family:'DM Serif Display',Georgia,serif;font-size:52px;line-height:1.16;color:#fff;margin-bottom:20px}
+.rule{width:70px;height:3px;background:#f86b3c;border-radius:2px;margin-bottom:22px}
+.cover-tag{font-size:16px;color:rgba(244,246,251,.5);line-height:1.5;margin-bottom:6px}
+.cover-hl{font-family:'DM Serif Display',Georgia,serif;font-size:26px;color:#f86b3c}
+.cover-art img{width:100%;max-width:520px;height:auto;display:block;margin-left:auto}
+.cover-meta{display:flex;gap:22px;flex-wrap:wrap}
+.cover-meta span{font-size:12.5px;color:rgba(244,246,251,.55);display:inline-flex;align-items:center;gap:8px}
+.cover-meta i{width:7px;height:7px;border-radius:50%;background:#f86b3c;display:inline-block}
+.cover-f{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pill{display:inline-block;border:1px solid rgba(244,246,251,.28);border-radius:30px;padding:8px 18px;font-size:12px;font-weight:600;letter-spacing:.1em;color:rgba(244,246,251,.75);text-transform:uppercase}
+.cover-conf{font-size:10px;color:rgba(244,246,251,.3);letter-spacing:.04em}
+.scroll{display:flex;flex-direction:column;align-items:center;gap:6px;margin:30px auto 0;text-decoration:none}
+.scroll span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:rgba(244,246,251,.55)}
+.scroll svg{width:22px;height:22px;stroke:#f86b3c;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.scroll svg{animation:none;opacity:1}}
+.wrap{max-width:1060px;margin:0 auto;padding:76px 40px 90px}
+.sec{margin-bottom:76px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f86b3c;margin-bottom:10px}
+h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;color:#262533;margin-bottom:12px}
+.sub{font-size:16px;color:#475569;line-height:1.6;max-width:760px;margin-bottom:34px}
+.part{display:flex;gap:26px;background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:28px 30px;margin-bottom:16px}
+.part-n{font-family:'DM Serif Display',serif;font-size:30px;color:#f86b3c;line-height:1;flex-shrink:0;width:44px}
+.part-b h3{font-size:20px;color:#262533;margin-bottom:3px}
+.part-s{font-size:13px;color:#94a3b8;font-weight:600;margin-bottom:14px}
+.part-b ul{list-style:none}
+.part-b li{position:relative;padding-left:18px;margin-bottom:9px;font-size:15px;line-height:1.62;color:#475569}
+.part-b li:before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#cbd5e1}
+.part-b li b{color:#262533}
+.tks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tk{background:#fff;border:1px solid #dce2ee;border-left:3px solid #f86b3c;border-radius:8px;padding:20px 22px}
+.tk-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:7px}
+.tk p{font-size:14.5px;line-height:1.6;color:#475569}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dce2ee;border-radius:10px;overflow:hidden}
+td{padding:13px 20px;border-bottom:1px solid #eef1f7;font-size:15px;color:#475569}
+tr:last-child td{border-bottom:none}
+td:first-child{width:170px}
+.q{display:flex;gap:22px;background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:24px 28px;margin-bottom:14px}
+.q-n{font-weight:700;font-size:13px;color:#f86b3c;letter-spacing:.08em;flex-shrink:0;width:34px;padding-top:2px}
+.q-b{flex:1}
+.q-t{font-weight:600;font-size:16.5px;color:#262533;margin-bottom:14px;line-height:1.45}
+.q-o{list-style:none;margin-bottom:14px}
+.q-o li{font-size:14.5px;color:#94a3b8;padding:7px 12px;border-radius:6px;margin-bottom:3px;line-height:1.45}
+.q-o li.ok{background:#ecfdf5;color:#065f46;font-weight:600;border:1px solid #a7f3d0}
+.tick{color:#059669;font-weight:700}
+.q-w{font-size:14px;color:#475569;line-height:1.6;border-top:1px dashed #dce2ee;padding-top:12px}
+.pk{background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:26px 30px;margin-bottom:14px}
+.pk-q{font-family:'DM Serif Display',Georgia,serif;font-size:21px;color:#262533;margin-bottom:12px;line-height:1.35}
+.pk-a{font-size:15px;line-height:1.68;color:#475569}
+.pk-a p{margin-bottom:10px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.ab-col{background:#f7f9fc;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.ab-h{font-weight:700;font-size:15px;color:#262533;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #f86b3c;display:inline-block}
+.ab-col p{font-size:14.5px;line-height:1.62;color:#475569;margin-bottom:10px}
+.ab-k{background:#fff;border-radius:6px;padding:9px 12px;font-size:14px!important;margin-bottom:0!important;border:1px solid #dce2ee}
+.ab-f{background:#262533;color:#e2e8f0;border-radius:8px;padding:14px 18px;font-size:14.5px;line-height:1.6;margin-top:14px!important}
+.ab-f b{color:#ff9470}
+.mat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mt{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.mt-l{font-weight:600;font-size:15px;color:#262533}
+.mt-d{font-size:13px;color:#94a3b8;margin-top:2px}
+.lnk{font-size:13px;font-weight:600;color:#f86b3c;text-decoration:none;border:1px solid #f86b3c;border-radius:20px;padding:6px 14px;white-space:nowrap}
+.lnk.todo{color:#b45309;border-color:#fcd34d;background:#fffbeb}
+.pps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pp{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.pp-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:6px}
+.pp p{font-size:14.5px;line-height:1.6;color:#475569}
+.callout{background:#262533;border-radius:12px;padding:26px 30px;margin-top:16px}
+.callout-h{font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:#fff;margin-bottom:12px}
+.callout p{font-size:15px;line-height:1.68;color:rgba(244,246,251,.72);margin-bottom:10px}
+.callout p:last-child{margin-bottom:0}
+.callout b{color:#ff9470}
+.note{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:18px 22px;font-size:14.5px;line-height:1.65;color:#78350f}
+.note b{color:#78350f}
+.closing{background:#262533;padding:90px 60px;text-align:center}
+.closing img{height:40px;margin-bottom:30px}
+.closing h2{font-family:'DM Serif Display',Georgia,serif;font-size:42px;color:#fff;margin-bottom:0}
+.closing .rule{margin:22px auto 24px}
+.closing p{color:rgba(244,246,251,.55);font-size:16px;line-height:1.6}
+.closing .foot{margin-top:34px;font-size:12px;color:rgba(244,246,251,.3)}
+@media(max-width:860px){.tks,.ab,.mat,.pps{grid-template-columns:1fr}.cover,.wrap,.closing{padding-left:24px;padding-right:24px}.cover-body{grid-template-columns:1fr}.cover-art{display:none}.cover-body h1{font-size:36px}}
+.rhead{background:#262533;padding:34px 40px 30px}
+.rhead-in{max-width:1060px;margin:0 auto}
+.rhead .lock{margin-bottom:26px}
+.rhead-h1{font-family:'DM Serif Display',Georgia,serif;font-size:40px;line-height:1.18;font-weight:400;color:#fff;margin-bottom:24px}
+.rhead-f{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+@media(max-width:700px){.rhead{padding:28px 22px}.rhead-h1{font-size:30px}}
+.foot-bar{background:#262533;padding:28px 40px;text-align:center}
+.foot-bar p{font-size:13.5px;color:rgba(244,246,251,.55);line-height:1.6;max-width:640px;margin:0 auto 10px}
+.foot-bar span{font-size:11.5px;color:rgba(244,246,251,.3)}
+.assess{background:#fff;border:1px solid #dce2ee;border-top:4px solid #f86b3c;border-radius:12px;padding:28px 30px}
+.assess-split{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px}
+@media(max-width:780px){.assess-split{grid-template-columns:1fr;gap:20px}}
+.assess-part-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.assess-part-h b{font-size:15px;color:#262533}
+.assess-pill{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#fff1ee;color:#c2410c;border-radius:20px;padding:3px 10px}
+.assess-pill.purple{background:#f5f3ff;color:#7c3aed}
+.assess-topics{display:flex;flex-wrap:wrap;gap:6px}
+.assess-topics span{font-size:12px;color:#64748b;background:#f7f9fc;border:1px solid #dce2ee;border-radius:20px;padding:4px 11px}
+.assess-foot{border-top:1px solid #eef1f7;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.assess-note{font-size:13px;color:#94a3b8}
+.assess-btn{display:inline-flex;align-items:center;gap:9px;background:#f86b3c;color:#fff;text-decoration:none;font-size:13px;font-weight:700;border-radius:10px;padding:12px 22px;white-space:nowrap;transition:background .15s,transform .15s}
+.assess-btn:hover{background:#e0552a;transform:translateY(-1px)}
+.assess-btn i{font-style:normal;display:inline-block;transition:transform .15s}
+.assess-btn:hover i{transform:translateX(3px)}
+</style></head><body>
+
+<div class="rhead">
+  <div class="rhead-in">
+    <div class="lock"><img class="acc" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMTE2IDQ2NiIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTE5OTYuMSAxODYuMjA0QzIwMTcuMTMgMTQ3Ljg1IDIwNTcuOTYgMTI4LjA1NSAyMTE1LjQ5IDEyOC4wNTVWMTg1LjU4NUMyMTEwLjU0IDE4NC45NjcgMjEwNi4yMSAxODQuOTY3IDIxMDEuODggMTg0Ljk2N0MyMDM4LjE3IDE4NC45NjcgMTk5OC41NyAyMjMuOTM5IDE5OTguNTcgMjk1LjY5OFY0NTkuMDExSDE5MzkuMTlWMTMxLjE0OEgxOTk2LjFWMTg2LjIwNFoiIGZpbGw9IiMwNjJGN0UiLz4KICA8cGF0aCBkPSJNMTg3NS4yOCAyOTYuOTM1QzE4NzUuMjggMzAxLjg4NCAxODc0LjY2IDMwOS4zMDcgMTg3NC4wNSAzMTQuODc1SDE2MDguMDRDMTYxNS40NyAzNzIuNDA2IDE2NjEuODYgNDEwLjc1OSAxNzI2LjgyIDQxMC43NTlDMTc2NS4xNyA0MTAuNzU5IDE3OTcuMzQgMzk3Ljc2OSAxODIxLjQ2IDM3MS4xNjhMMTg1NC4yNSA0MDkuNTIyQzE4MjQuNTYgNDQ0LjE2NCAxNzc5LjQgNDYyLjcyMyAxNzI0Ljk2IDQ2Mi43MjNDMTYxOS4xOCA0NjIuNzIzIDE1NDguNjYgMzkyLjgyIDE1NDguNjYgMjk1LjA3OUMxNTQ4LjY2IDE5Ny45NTggMTYxOC41NiAxMjguMDU1IDE3MTMuMjEgMTI4LjA1NUMxODA3Ljg1IDEyOC4wNTUgMTg3NS4yOCAxOTYuMTAyIDE4NzUuMjggMjk2LjkzNVpNMTcxMy4yMSAxNzguMTYyQzE2NTYuMjkgMTc4LjE2MiAxNjE0LjIzIDIxNi41MTYgMTYwOC4wNCAyNzIuMTkxSDE4MTguMzdDMTgxMi4xOCAyMTcuMTM1IDE3NzAuNzQgMTc4LjE2MiAxNzEzLjIxIDE3OC4xNjJaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE0MjQuNzUgNDU5LjAwOVYwSDE0ODQuMTRWNDU5LjAwOUgxNDI0Ljc1WiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0xMzYwLjg0IDI5Ni45MzVDMTM2MC44NCAzMDEuODg0IDEzNjAuMjMgMzA5LjMwNyAxMzU5LjYxIDMxNC44NzVIMTA5My42MUMxMTAxLjAzIDM3Mi40MDYgMTE0Ny40MiA0MTAuNzU5IDEyMTIuMzggNDEwLjc1OUMxMjUwLjczIDQxMC43NTkgMTI4Mi45IDM5Ny43NjkgMTMwNy4wMyAzNzEuMTY4TDEzMzkuODEgNDA5LjUyMkMxMzEwLjEyIDQ0NC4xNjQgMTI2NC45NiA0NjIuNzIzIDEyMTAuNTIgNDYyLjcyM0MxMTA0Ljc0IDQ2Mi43MjMgMTAzNC4yMiAzOTIuODIgMTAzNC4yMiAyOTUuMDc5QzEwMzQuMjIgMTk3Ljk1OCAxMTA0LjEyIDEyOC4wNTUgMTE5OC43NyAxMjguMDU1QzEyOTMuNDIgMTI4LjA1NSAxMzYwLjg0IDE5Ni4xMDIgMTM2MC44NCAyOTYuOTM1Wk0xMTk4Ljc3IDE3OC4xNjJDMTE0MS44NiAxNzguMTYyIDEwOTkuNzkgMjE2LjUxNiAxMDkzLjYxIDI3Mi4xOTFIMTMwMy45M0MxMjk3Ljc1IDIxNy4xMzUgMTI1Ni4zIDE3OC4xNjIgMTE5OC43NyAxNzguMTYyWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik04NzcuNDE0IDQ2Mi43MjNDNzc2LjU4IDQ2Mi43MjMgNzA0LjIwMyAzOTIuODIgNzA0LjIwMyAyOTUuMDc5QzcwNC4yMDMgMTk3LjMzOSA3NzYuNTggMTI4LjA1NSA4NzcuNDE0IDEyOC4wNTVDOTM2LjE4MiAxMjguMDU1IDk4NS4wNTIgMTUyLjE4IDEwMTEuMDMgMTk3Ljk1OEw5NjUuODc1IDIyNy4wMzJDOTQ0Ljg0MiAxOTQuODY1IDkxMi42NzUgMTgwLjAxOCA4NzYuNzk1IDE4MC4wMThDODEyLjQ2IDE4MC4wMTggNzY0LjIwOCAyMjUuMTc2IDc2NC4yMDggMjk1LjA3OUM3NjQuMjA4IDM2Ni4yMiA4MTIuNDYgNDEwLjc1OSA4NzYuNzk1IDQxMC43NTlDOTEyLjY3NSA0MTAuNzU5IDk0NC44NDIgMzk1LjkxMyA5NjUuODc1IDM2My43NDVMMTAxMS4wMyAzOTIuMjAxQzk4NS4wNTIgNDM3Ljk3OCA5MzYuMTgyIDQ2Mi43MjMgODc3LjQxNCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik01NDcuMzk4IDQ2Mi43MjNDNDQ2LjU2NSA0NjIuNzIzIDM3NC4xODggMzkyLjgyIDM3NC4xODggMjk1LjA3OUMzNzQuMTg4IDE5Ny4zMzkgNDQ2LjU2NSAxMjguMDU1IDU0Ny4zOTggMTI4LjA1NUM2MDYuMTY2IDEyOC4wNTUgNjU1LjAzNiAxNTIuMTggNjgxLjAxOCAxOTcuOTU4TDYzNS44NiAyMjcuMDMyQzYxNC44MjcgMTk0Ljg2NSA1ODIuNjU5IDE4MC4wMTggNTQ2Ljc4IDE4MC4wMThDNDgyLjQ0NCAxODAuMDE4IDQzNC4xOTMgMjI1LjE3NiA0MzQuMTkzIDI5NS4wNzlDNDM0LjE5MyAzNjYuMjIgNDgyLjQ0NCA0MTAuNzU5IDU0Ni43OCA0MTAuNzU5QzU4Mi42NTkgNDEwLjc1OSA2MTQuODI3IDM5NS45MTMgNjM1Ljg2IDM2My43NDVMNjgxLjAxOCAzOTIuMjAxQzY1NS4wMzYgNDM3Ljk3OCA2MDYuMTY2IDQ2Mi43MjMgNTQ3LjM5OCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0zMjkuNTA0IDMwMC44NjlDMzI5LjUwNCAzMzMuNDU0IDMxOS44NDEgMzY1LjMwNyAzMDEuNzM4IDM5Mi40QzI4My42MzUgNDE5LjQ5NCAyNTcuOTA0IDQ0MC42MSAyMjcuOCA0NTMuMDhDMTk3LjY5NSA0NjUuNTUgMTY0LjU2OSA0NjguODEyIDEzMi42MTEgNDYyLjQ1NUMxMDAuNjUyIDQ1Ni4wOTggNzEuMjk1OCA0NDAuNDA3IDQ4LjI1NDggNDE3LjM2NkMyNS4yMTM4IDM5NC4zMjUgOS41MjI3MyAzNjQuOTY5IDMuMTY1NzQgMzMzLjAxMUMtMy4xOTEyNSAzMDEuMDUyIDAuMDcxMzg1MiAyNjcuOTI2IDEyLjU0MTEgMjM3LjgyMUMyNS4wMTA4IDIwNy43MTcgNDYuMTI3NCAxODEuOTg2IDczLjIyMDcgMTYzLjg4M0MxMDAuMzE0IDE0NS43OCAxMzIuMTY3IDEzNi4xMTcgMTY0Ljc1MiAxMzYuMTE3VjE4Ni4zNjZDMTQyLjEwNSAxODYuMzY2IDExOS45NjcgMTkzLjA4MSAxMDEuMTM3IDIwNS42NjNDODIuMzA3NCAyMTguMjQ1IDY3LjYzMTIgMjM2LjEyOCA1OC45NjQ4IDI1Ny4wNTFDNTAuMjk4MyAyNzcuOTczIDQ4LjAzMDcgMzAwLjk5NiA1Mi40NDg5IDMyMy4yMDhDNTYuODY3IDM0NS40MTkgNjcuNzcyNCAzNjUuODIyIDgzLjc4NiAzODEuODM1Qzk5Ljc5OTUgMzk3Ljg0OSAxMjAuMjAyIDQwOC43NTQgMTQyLjQxNCA0MTMuMTcyQzE2NC42MjUgNDE3LjU5IDE4Ny42NDggNDE1LjMyMyAyMDguNTcxIDQwNi42NTZDMjI5LjQ5MyAzOTcuOTkgMjQ3LjM3NiAzODMuMzE0IDI1OS45NTggMzY0LjQ4NEMyNzIuNTQgMzQ1LjY1NCAyNzkuMjU1IDMyMy41MTYgMjc5LjI1NSAzMDAuODY5SDMyOS41MDRaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE5My4zOTEgMTM2LjExN0gzMjkuNTA2VjE4Ni42OTZIMTkzLjM5MVYxMzYuMTE3WiIgZmlsbD0iIzAwRDJFRSIvPgogIDxwYXRoIGQ9Ik0zMjkuNSAxNDUuNzg5VjI3NS4yMUgyNzguMTc4VjE0NS43ODlIMzI5LjVaIiBmaWxsPSIjMDBEMkVFIi8+CiAgPHBhdGggZD0iTTMyOS41IDMwMS4yNDJWNDYwLjQxNkgyNzguMTc4VjMwMS4yNDJIMzI5LjVaIiBmaWxsPSIjMDYyRjdFIi8+Cjwvc3ZnPgo=" alt="Acceler"><span class="div"></span><img class="cli" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAA+CAYAAAAIyajNAAAB80lEQVR4nO2bUXKDMAxERSdXaS/Q+58t+elQOiUxLUbaXe37zUzsRM8rA2b5eP+8xzmWwednv//oOJnM+k1QvFVPgBBJESJyZEBa0eY5C1MyIKxIhDlcBpMM5jqWiDwZZrWKypUpnQoRTgazIVMGhXRQZK2Lk+EYLQTMlsHpgMWPejgZxrQRzzL05VdKV8jA1CrapEKEk8FsqJKBKR0U2f3/b9mzICLr0fvVRwgOU9kmOqQD1RNb7xn2QRbsMiyDWamWAbFVKB7TO0S1DAYIBBkQ0+EsdKkQgSEDEkhCpYMig1I6UKZCBI4MCCCIVAqSDErpQAmSDJW0vZzcYhnMCpoMFa3CqfAFmgymEEQZGDeS9KkQgSlDJr7y2IAqA1M6SKRCBK4MpoDuMsis6hkgy8DQKqRkQpYhC6mCngFdBuR0kJMIXYYs5Ar7HxhkQEwHSXkYZDBJWIZvJFf7X2CRAalVyErDIkMWsoU+ApMMCOkgLQuTDFlIF/wVM17Jn31D51Uxlknj3QfjPBtbGsRk8BmDIhBlGJGxd5BPgT1QZUBLhxZyoMqAQAsBtrDKkHmZ2UYKZBkQWkUbESKwZRiBcBNKCnQZXKhE0GUY4XSYCIMMLlQSDDKYJBRkcKuYBIsM7QuVAYsMI5wOE1CRIaLZDaIreAB7CzUKivZ9OAAAAABJRU5ErkJggg==" alt="LVT"></div>
+    <h1 class="rhead-h1">Day 2 Recap<br>AI-Assisted Development Program</h1>
+    <div class="rhead-f">
+      <span class="pill">Day 2 of 4 &middot; 13 July 2026</span>
+      <div class="cover-meta">
+        <span><i></i>AI Adoption</span>
+        <span><i></i>MCP &amp; Hooks</span>
+        <span><i></i>Plan Mode</span>
+        <span><i></i>Spec-Driven Development</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="start">
+
+  <div class="sec">
+    <div class="eyebrow">What We Covered</div>
+    <h2>Four parts, one throughline.</h2>
+    <p class="sub">Day 1 was about learning to direct the tool. Day 2 was about doing it with discipline: what the research actually says about AI and skill-building, how to extend Claude Code beyond your filesystem, how to separate thinking from doing with Plan Mode, and how to make intent &mdash; not code &mdash; the source of truth.</p>
+
+  <div class="part">
+    <div class="part-n">01</div>
+    <div class="part-b">
+      <h3>AI-Assisted Coding &amp; AI Adoption</h3><p class="part-s">What a controlled study reveals about speed, skills, and how you should use AI</p>
+      <ul><li>A new Anthropic study &mdash; Shen &amp; Tamkin (2026), <code>arXiv:2601.20245</code> &mdash; ran 52 engineers through a randomized controlled trial: build two features with an unfamiliar async library, with or without AI, then a quiz on the concepts just used.</li><li><b>The result:</b> the AI group scored 17% lower on the post-task quiz &mdash; about two letter grades (~50% vs ~67%, Cohen's d = 0.738, p = 0.01). The biggest gap was in <b>debugging</b>, exactly the skill you need to catch AI's mistakes. The speed gain was only ~2 minutes and not statistically significant.</li><li><b>What actually mattered was HOW people used it.</b> Low scorers (&lt;40%) fully delegated code generation or only used AI to fix errors. High scorers (65%+) generated code then asked follow-up questions, requested explanations alongside code, or asked conceptual questions while coding solo. Cognitive effort &mdash; even getting stuck &mdash; is what builds mastery.</li><li><b>The adoption journey</b> runs in stages: drop the copy-paste chatbot for an agent that reads files and runs programs &rarr; reproduce your own past work to learn the tool's limits &rarr; kick off end-of-day agents for a warm start tomorrow &rarr; outsource the slam dunks, keep the deep work &rarr; turn every mistake into a rule in AGENTS.md &rarr; eventually, keep a useful agent running in the background.</li><li><b>The non-negotiable:</b> verify, test and review everything &mdash; treat AI output like a junior developer's, confident but error-prone. Commit often as save points. Customize behaviour with CLAUDE.md and style guides. AI amplifies fundamentals: strong engineers get multiplied, weak foundations get amplified confusion.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">02</div>
+    <div class="part-b">
+      <h3>MCP &amp; Hooks</h3><p class="part-s">Connecting Claude Code to your tools, and automating your guardrails</p>
+      <ul><li><b>MCP (Model Context Protocol)</b> is an open standard connecting Claude Code to file systems, databases, third-party APIs, browsers, custom tools and search engines &mdash; think of it as USB-C for AI agents, one connector instead of one cable per device.</li><li>An MCP server exposes three things: <b>Tools</b> (actions Claude can execute &mdash; open a PR, query a database), <b>Resources</b> (data Claude can read &mdash; a Notion doc, a log file), and <b>Prompts</b> (reusable templates for common tasks).</li><li><b>The call flow:</b> Claude Code (the MCP host) connects via an MCP client &rarr; the model picks a tool &rarr; the client sends the request over the MCP protocol &rarr; the server runs and calls the real API &rarr; the result returns to the model. Worked end to end in the demo: pull a Jira ticket, read and edit the source file, run the tests, open a GitHub PR, notify the team on Slack.</li><li><b>Hooks</b> are user-defined shell commands Claude Code runs automatically at specific lifecycle points &mdash; <code>PreToolUse</code> (before a tool call, can block it), <code>PostToolUse</code> (after it completes), <code>Notification</code>, and <code>Stop</code>. Instead of prompting Claude to "always run the linter," you wire it in: edit &rarr; hook fires &rarr; linter runs. Guaranteed, every time, zero tokens.</li><li>A hook controls the action three ways: <b>exit 0</b> allows it, <b>exit 2</b> blocks it and tells Claude why, or a <b>JSON decision</b> can allow, deny, ask, or rewrite. Configured in <code>settings.json</code> or <code>/hooks</code>, and can be committed so the whole team gets them.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">03</div>
+    <div class="part-b">
+      <h3>Claude Code Plan Mode</h3><p class="part-s">Separate thinking from doing</p>
+      <ul><li><b>Why plan first:</b> assistants are trained to be helpful and start writing code immediately, making silent assumptions about your architecture. At roughly 80% right per decision and ~20 decisions in a typical feature, that's about a 1% chance everything is correct. The fix isn't a cleverer prompt &mdash; it's separating thinking from doing.</li><li><b>Plan Mode is read-only:</b> Claude can read files, search the codebase, list directories, search the web, spawn research sub-agents, and ask clarifying questions &mdash; but it cannot write, edit, or run shell commands. The output is a reviewable plan; nothing is implemented until you approve it.</li><li><b>Three modes:</b> Normal (asks before each edit), Auto-Accept (executes without asking &mdash; for running an approved plan), and Plan Mode (read-only analysis for complex, multi-file, or unfamiliar work). Enter it with <code>Shift+Tab</code> twice, <code>/plan</code> mid-session, or <code>--permission-mode plan</code> at launch.</li><li><b>The core workflow:</b> Explore &rarr; Plan &rarr; Implement &rarr; Commit. The first two phases are the cheapest in tokens and the most valuable in outcome &mdash; they prevent solving the wrong problem.</li><li><b>The plan is a contract:</b> open it in your editor (<code>Ctrl+G</code>), annotate, delete steps, reorder &mdash; Claude picks up every change. Store plans in your repo and they become decision records and ready-made PR descriptions.</li><li><b>The one-sentence rule:</b> if you can describe the exact change in one sentence, just do it. Plan when the task touches 3+ files, involves an architectural decision, or the codebase is unfamiliar.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">04</div>
+    <div class="part-b">
+      <h3>Spec-Driven Development</h3><p class="part-s">From vibe coding to executable intent</p>
+      <ul><li><b>Vibe coding</b> &mdash; describe a goal, get code back &mdash; is fine for quick prototypes but unreliable for serious work. The problem isn't the agent's ability; it's treating a literal-minded pair programmer like a search engine. "Add photo sharing to my app" forces it to guess thousands of unstated requirements, and every handoff between stakeholder needs, requirements, design, implementation and validation is a place intent can leak.</li><li><b>The big idea:</b> from "code is the source of truth" to "intent is the source of truth." AI is what makes a specification executable.</li><li><b>The lifecycle:</b> Constitution (principles, standards, tech stack &mdash; persists across sessions) &rarr; Specify (the what and why, no tech stack yet) &rarr; Clarify (resolve ambiguity before planning) &rarr; Plan (now go technical) &rarr; Tasks (break the plan into small, independently testable chunks) &rarr; Implement &amp; Validate. The core four everyone shares: Specify &rarr; Plan &rarr; Tasks &rarr; Implement.</li><li><b>Small tasks over vague asks:</b> "build authentication" makes the agent guess. "Create a registration endpoint that validates email format" gives it something to verify. Concrete, reviewable tasks the agent can implement and test in isolation &mdash; almost TDD for the AI.</li><li><b>Where it shines:</b> greenfield (0&rarr;1) builds, feature work (N&rarr;N+1, its most powerful use), and legacy modernization &mdash; recapturing lost intent in a fresh spec.</li><li><b>Stay the human in the loop:</b> run "grill me" sessions where the AI interviews you before any code is written, favour vertical slices with failing-tests-first, design deep module interfaces yourself and delegate the internals, and retire old specs so the agent never builds against stale requirements.</li></ul>
+    </div>
+  </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Key Takeaways</div>
+    <h2>If you remember six things.</h2>
+    <div class='tks'><div class="tk"><div class="tk-h">Delegation without engagement costs you the skill</div><p>The controlled study found a 17% quiz-score gap for the AI group, with the largest hit landing on debugging &mdash; the exact skill you need to catch AI's mistakes.</p></div><div class="tk"><div class="tk-h">It's how you use AI, not whether</div><p>Fully delegating or using AI only to fix errors is what tanked scores. Asking follow-up questions and requesting explanations alongside code is what kept people learning.</p></div><div class="tk"><div class="tk-h">Plan Mode turns 1% odds into a contract</div><p>Twenty compounding assumptions at 80% accuracy each is roughly a 1% chance everything is right. Plan Mode makes you review the plan, not the aftermath.</p></div><div class="tk"><div class="tk-h">Hooks enforce structurally, not conversationally</div><p>A hook runs outside Claude's context window, adds zero tokens, and never depends on Claude interpreting an instruction correctly. "Always run the linter" becomes guaranteed, not hoped-for.</p></div><div class="tk"><div class="tk-h">MCP is the one connector for every tool</div><p>Tools it can call, resources it can read, prompts it can reuse &mdash; one protocol instead of a bespoke integration per service.</p></div><div class="tk"><div class="tk-h">Intent is the source of truth</div><p>Code is what AI accelerates. The spec is what keeps that acceleration pointed at the right target.</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Cheat Sheet</div>
+    <h2>Plan Mode &amp; hooks, at a glance.</h2>
+    <table><tr><td><code>Shift+Tab</code> &times;2</td><td>Enter Plan Mode from a running session</td></tr><tr><td><code>/plan</code></td><td>Enter Plan Mode mid-session</td></tr><tr><td><code>--permission-mode plan</code></td><td>Launch <code>claude</code> straight into Plan Mode</td></tr><tr><td><code>Ctrl+G</code></td><td>Open the current plan in your editor to annotate or reorder it</td></tr><tr><td><code>PreToolUse</code></td><td>Hook that fires before a tool call &mdash; the only one that can still block it</td></tr><tr><td><code>PostToolUse</code></td><td>Hook that fires after a tool completes &mdash; formatting, linting, logging</td></tr><tr><td>Exit 0 / Exit 2</td><td>Hook allows the action / hook blocks it and tells Claude why</td></tr><tr><td>Explore &rarr; Plan &rarr; Implement &rarr; Commit</td><td>The core workflow &mdash; review happens before a line changes</td></tr></table>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Questions We Parked or Rushed</div>
+    <h2>The answers we owed you.</h2>
+    <p class="sub">Some of these got a hurried answer on the day and some got none at all. Here they are properly.</p>
+    <div class="pk"><div class="pk-q">The big one: would a hook built for Claude Code work the same way in Cursor? And why write today's demo hooks in shell script rather than TypeScript or Python?</div><div class="pk-a">Two related questions from the same demo, and the honest answer on the day was "I haven't used Cursor a lot" &mdash; worth a proper one here.<div class='ab'><div class='ab-col'><div class='ab-h'>Claude Code</div><p>Runs a pure agentic loop: the model plus a small set of tools (bash, read, write, glob, grep). Hooks are shell commands wired into that loop at specific lifecycle points &mdash; <code>PreToolUse</code>, <code>PostToolUse</code>, and so on.</p></div><div class='ab-col'><div class='ab-h'>Cursor</div><p>Built around repository indexing and retrieval rather than an explicit tool-call loop. It has its own "rules" mechanism, but a rule and a hook aren't the same primitive &mdash; nothing here ports over 1:1.</p></div></div><p class='ab-f'>The portable layer across tools isn't hooks &mdash; it's <b>files you commit to the repo</b>. A CLAUDE.md/AGENTS.md pair works everywhere because every tool reads plain files. Hooks are Claude Code-specific enforcement; treat them as a Claude Code feature, not a cross-tool standard.</p><p>On the shell script choice: it wasn't a technical requirement &mdash; a hook can be any executable. Shell was used for the demo because it needs no extra dependency to run and stays short enough to read inline. TypeScript or Python earn their keep once a hook needs real logic &mdash; JSON parsing, calling another service, structured error handling &mdash; which gets awkward fast in bash.</p></div></div><div class="pk"><div class="pk-q">How much token spend is typical? We're not sure if our spend limits are standard, high, or low.</div><div class="pk-a">This one didn't get an answer on the day, so here's the honest one: there isn't a single right number. Spend scales with model tier, how much context you're feeding in, and how many subagents or tool calls a task triggers. A day like today &mdash; MCP, hooks, Plan Mode &mdash; typically runs heavier than a plain code-generation day, simply because every tool call and every hook firing adds to the loop. For a concrete read on your own usage, <code>/cost</code> shows session-level token spend and <code>/context</code> shows what's filling the window right now. Whether your specific limits are standard for a team your size is a provisioning question for your account admin &mdash; we don't have visibility into your organization's plan from the training side.</div></div><div class="pk"><div class="pk-q">If the AI is just going to expand our short 5-point list into a full ~120-line constitution anyway, why not have it work straight from the short version and save the tokens?</div><div class="pk-a">A sharp question that got deflected into "here are some other tools" instead of a real answer &mdash; here's the real one. A five-point list is fine as input, but it's not fine as a working document: it's compressed, and every gap in it forces the agent to guess. Expanding it into a full constitution front-loads the same problem Plan Mode exists to solve &mdash; you pay the token cost once, in a form you can actually read and correct, instead of paying a smaller ambiguity tax every time the agent has to reinterpret a terse bullet point mid-generation. It's also reused, not single-use: the constitution persists across every session for the life of the project, so its cost amortizes across every planning and implementation run that reads it &mdash; unlike a five-point list the agent would otherwise have to reinterpret from scratch each time.</div></div><div class="pk"><div class="pk-q">Are the specs, plans, and tasks documents version-controlled with the rest of the repo, or kept separate?</div><div class="pk-a">Yes &mdash; and it's worth the full answer rather than the one-line version we gave live. Spec-kit style tooling keeps the constitution, specs, plans and tasks as plain markdown files inside a project folder (commonly <code>.specify/</code> or <code>specs/</code>) that lives in your normal git history, not a separate system. That means normal code review applies: a diff shows exactly when a spec changed and why, and a PR comment can question a requirement the same way it questions a line of code. The one decision worth making as a team is what happens to a spec once its feature ships &mdash; keep it as a permanent decision record, or archive it. Leaving that undecided is the "doc rot" risk flagged in the SDD section: an agent building against a spec nobody retired is building against a stale requirement.</div></div><div class="pk"><div class="pk-q">I'm still unclear where prompts stop and agents start.</div><div class="pk-a">A fair thing to still be fuzzy on &mdash; this one never got picked up live, so here's the clean version. A <b>prompt</b> (like the <code>/format</code> slash command from today's demo) is a static, reusable piece of text you invoke on demand; it does the same fixed thing every time and has no autonomy of its own &mdash; it's just text inserted into your current session. A <b>skill</b> is reusable know-how (a folder with a SKILL.md) that gets loaded into the agent's existing context when its description matches what you're doing &mdash; still the same agent, same context window, just handed more instructions mid-task. An <b>agent</b> (or subagent) is different in kind: a separate reasoning loop with its own context window and its own tool access, running autonomously across multiple steps and reporting back a result. The dividing line is autonomy: a prompt has none, a skill borrows the calling agent's, and an agent has its own.</div></div><div class="pk"><div class="pk-q">Why do I keep hitting <code>tsx: not found</code>, and why doesn't my VM match what's on screen?</div><div class="pk-a">This hit enough people &mdash; and the instructor himself, mid-demo &mdash; that it's worth a proper note rather than a one-off troubleshooting reply. <code>tsx: not found</code> is almost always a stale or missing <code>node_modules</code>, or running the command from the wrong folder: <code>cd</code> into the project root and run <code>npm install</code> before trying again. Separately, several of you found the shared VM had different folders and repos preloaded than what was actually being used in the demo, forcing an unplanned re-clone mid-session; a few also hit <code>git clone</code> failing over SSH (<code>Permission denied (publickey)</code>) &mdash; switching to the HTTPS clone URL fixed it every time it came up. If clipboard paste stops working, right-click &rarr; paste is the reliable fallback when <code>Ctrl+Shift+V</code> doesn't register. This is the same root cause as Day 1's environment friction &mdash; drift on a shared VM &mdash; and it's already been flagged internally as a reason to move toward personal repo and key access instead of one shared image.</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Quiz Solutions</div>
+    <h2>The four checkpoint questions, answered.</h2>
+    <div class="q"><div class="q-n">Q1</div><div class="q-b"><p class="q-t">What best describes Plan Mode?</p><ul class="q-o"><li class="">A mode that auto-executes edits without asking</li><li class="ok">A read-only mode: the agent can read, search, and ask &mdash; but not change the project <span class=tick>&#10003;</span></li><li class="">A faster model for simple fixes</li><li class="">A mode that commits code automatically after each step</li></ul><p class="q-w">Plan Mode is read-only by design. Nothing in your project changes until you approve the plan and switch out of it.</p></div></div><div class="q"><div class="q-n">Q2</div><div class="q-b"><p class="q-t">According to the "one-sentence rule," when should you skip planning?</p><ul class="q-o"><li class="">When the task touches many files</li><li class="">When you're unfamiliar with the codebase</li><li class="ok">When you can describe the exact change in a single sentence <span class=tick>&#10003;</span></li><li class="">When an architectural decision is involved</li></ul><p class="q-w">If the change is that obvious, planning is overhead. The other three are exactly when you should plan.</p></div></div><div class="q"><div class="q-n">Q3</div><div class="q-b"><p class="q-t">What core shift does spec-driven development represent?</p><ul class="q-o"><li class="">From "intent is the source of truth" back to "code is the source of truth"</li><li class="">From writing tests first to writing tests last</li><li class="ok">From "code is the source of truth" to "intent is the source of truth" <span class=tick>&#10003;</span></li><li class="">From using agents to avoiding them entirely</li></ul><p class="q-w">The spec becomes the shared, executable artifact both humans and AI build against &mdash; not the code itself.</p></div></div><div class="q"><div class="q-n">Q4</div><div class="q-b"><p class="q-t">Why does the spec-driven workflow break work into small, concrete tasks?</p><ul class="q-o"><li class="ok">So they can be implemented and tested in isolation, keeping the agent on track <span class=tick>&#10003;</span></li><li class="">So the developer never has to review the output</li><li class="">Because agents can only read one file at a time</li><li class="">To make the spec longer and more detailed</li></ul><p class="q-w">Small tasks are reviewable in isolation &mdash; the difference between "build authentication" and "create a registration endpoint that validates email format."</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Before Day 3</div>
+    <h2>A few things to do between now and then.</h2>
+    <p class="sub">Day 3 moves into security review &mdash; a command-center app seeded with intentional bugs and vulnerabilities for you to find and fix with Claude Code.</p>
+    <div class='pps'>
+      <div class="pp"><div class="pp-h">Push your Day 2 work to GitHub</div><p>Same habit as Day 1 &mdash; commit what you built today and keep pushing daily. This is what you submit at the end of Day 4.</p></div>
+      <div class="pp"><div class="pp-h">Make Plan Mode your default</div><p>Practice the Explore &rarr; Plan &rarr; Implement &rarr; Commit habit on real work before Day 3, not for the first time in class.</p></div>
+      <div class="pp"><div class="pp-h">Bring a real problem</div><p>The security labs land differently against code you actually care about than against a generic sample.</p></div>
+      <div class="pp"><div class="pp-h">Check your VM boots</div><p>Two minutes now saves you fifteen at the top of the session.</p></div>
+      <div class="pp"><div class="pp-h">Come ready for hands-on review</div><p>Four labs are coming: catching sloppy AI output before it ships, reviewing code from more than one angle, hunting real security bugs, and locking down what's allowed to merge without review. Expect to spend most of Day 3 inside code, not slides.</p></div>
+    </div>
+    <div class="callout">
+      <div class="callout-h">Keep the habit going: commit as you go.</div>
+      <p>What you push each day becomes the repo you submit at the end of Day 4 &mdash; two days of real progress beats one commit dumped at the end. Make sure Day 2's work is pushed before Day 3 starts, then keep committing through the labs.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Session Resources</div>
+    <h2>Everything from Day 2, in one place.</h2>
+    <p class="sub">The slide deck, the code from the live demos, and an optional stretch assignment if you want to go further before Day 3.</p>
+    <div class='mat'>
+      <div class="mt"><div><div class="mt-l">Day 2 Slides &amp; Materials</div><div class="mt-d">The full Day 2 presentation and companion documents</div></div><a class="lnk" href="https://drive.google.com/drive/u/1/folders/1FP3q-eio3o-RItaQIA5jWH1wSmnHQRGs" target="_blank" rel="noopener">Open folder &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Session GitHub Repo</div><div class="mt-d">Code from the Day 2 live demos &mdash; MCP, hooks, Plan Mode, SDD</div></div><a class="lnk" href="https://github.com/smakubi/claude-code-labs/tree/main" target="_blank" rel="noopener">View repo &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Advanced Assignment</div><div class="mt-d">Optional stretch task &mdash; Day 2 code demo, advanced track</div></div><a class="lnk" href="https://github.com/nsr-19/accelerXlvt-labs/tree/main/lvt-day2-code-demo/Advance%20Assignment" target="_blank" rel="noopener">View assignment &rarr;</a></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot-bar">
+  <p>Questions before Day 3? The Slack group is the fastest route &mdash; ask there and everyone learns from the answer.</p>
+  <span>Day 2 Recap &mdash; AI-Assisted Development Program for LVT &middot; Anshaj Khare &middot; Acceler</span>
+</div>
+
+</body></html>
