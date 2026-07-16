@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 3 Recap — AI-Assisted Development Program — LVT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f9fc;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:#eef1f7;border:1px solid #dce2ee;border-radius:4px;padding:1px 5px;color:#262533;white-space:nowrap}
+a{color:#f86b3c}
+.cover{background:#262533;min-height:100vh;display:flex;flex-direction:column;padding:44px 60px 34px}
+.lock{background:#fff;border-radius:10px;padding:12px 22px;display:inline-flex;align-items:center;gap:18px;align-self:flex-start}
+.lock img.acc{height:26px} .lock .div{width:1px;height:30px;background:#dce2ee} .lock img.cli{height:26px}
+.cover-body{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.cover-body h1{font-family:'DM Serif Display',Georgia,serif;font-size:52px;line-height:1.16;color:#fff;margin-bottom:20px}
+.rule{width:70px;height:3px;background:#f86b3c;border-radius:2px;margin-bottom:22px}
+.cover-tag{font-size:16px;color:rgba(244,246,251,.5);line-height:1.5;margin-bottom:6px}
+.cover-hl{font-family:'DM Serif Display',Georgia,serif;font-size:26px;color:#f86b3c}
+.cover-art img{width:100%;max-width:520px;height:auto;display:block;margin-left:auto}
+.cover-meta{display:flex;gap:22px;flex-wrap:wrap}
+.cover-meta span{font-size:12.5px;color:rgba(244,246,251,.55);display:inline-flex;align-items:center;gap:8px}
+.cover-meta i{width:7px;height:7px;border-radius:50%;background:#f86b3c;display:inline-block}
+.cover-f{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pill{display:inline-block;border:1px solid rgba(244,246,251,.28);border-radius:30px;padding:8px 18px;font-size:12px;font-weight:600;letter-spacing:.1em;color:rgba(244,246,251,.75);text-transform:uppercase}
+.cover-conf{font-size:10px;color:rgba(244,246,251,.3);letter-spacing:.04em}
+.scroll{display:flex;flex-direction:column;align-items:center;gap:6px;margin:30px auto 0;text-decoration:none}
+.scroll span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:rgba(244,246,251,.55)}
+.scroll svg{width:22px;height:22px;stroke:#f86b3c;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.scroll svg{animation:none;opacity:1}}
+.wrap{max-width:1060px;margin:0 auto;padding:76px 40px 90px}
+.sec{margin-bottom:76px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f86b3c;margin-bottom:10px}
+h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;color:#262533;margin-bottom:12px}
+.sub{font-size:16px;color:#475569;line-height:1.6;max-width:760px;margin-bottom:34px}
+.part{display:flex;gap:26px;background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:28px 30px;margin-bottom:16px}
+.part-n{font-family:'DM Serif Display',serif;font-size:30px;color:#f86b3c;line-height:1;flex-shrink:0;width:52px}
+.part-b h3{font-size:20px;color:#262533;margin-bottom:3px}
+.part-s{font-size:13px;color:#94a3b8;font-weight:600;margin-bottom:14px}
+.part-b ul{list-style:none}
+.part-b li{position:relative;padding-left:18px;margin-bottom:9px;font-size:15px;line-height:1.62;color:#475569}
+.part-b li:before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#cbd5e1}
+.part-b li b{color:#262533}
+.tks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tk{background:#fff;border:1px solid #dce2ee;border-left:3px solid #f86b3c;border-radius:8px;padding:20px 22px}
+.tk-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:7px}
+.tk p{font-size:14.5px;line-height:1.6;color:#475569}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dce2ee;border-radius:10px;overflow:hidden}
+td{padding:13px 20px;border-bottom:1px solid #eef1f7;font-size:15px;color:#475569}
+tr:last-child td{border-bottom:none}
+td:first-child{width:220px}
+.q{display:flex;gap:22px;background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:24px 28px;margin-bottom:14px}
+.q-n{font-weight:700;font-size:13px;color:#f86b3c;letter-spacing:.08em;flex-shrink:0;width:34px;padding-top:2px}
+.q-b{flex:1}
+.q-t{font-weight:600;font-size:16.5px;color:#262533;margin-bottom:14px;line-height:1.45}
+.q-o{list-style:none;margin-bottom:14px}
+.q-o li{font-size:14.5px;color:#94a3b8;padding:7px 12px;border-radius:6px;margin-bottom:3px;line-height:1.45}
+.q-o li.ok{background:#ecfdf5;color:#065f46;font-weight:600;border:1px solid #a7f3d0}
+.tick{color:#059669;font-weight:700}
+.q-w{font-size:14px;color:#475569;line-height:1.6;border-top:1px dashed #dce2ee;padding-top:12px}
+.pk{background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:26px 30px;margin-bottom:14px}
+.pk-q{font-family:'DM Serif Display',Georgia,serif;font-size:21px;color:#262533;margin-bottom:12px;line-height:1.35}
+.pk-a{font-size:15px;line-height:1.68;color:#475569}
+.pk-a p{margin-bottom:10px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.ab-col{background:#f7f9fc;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.ab-h{font-weight:700;font-size:15px;color:#262533;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #f86b3c;display:inline-block}
+.ab-col p{font-size:14.5px;line-height:1.62;color:#475569;margin-bottom:10px}
+.ab-k{background:#fff;border-radius:6px;padding:9px 12px;font-size:14px!important;margin-bottom:0!important;border:1px solid #dce2ee}
+.ab-f{background:#262533;color:#e2e8f0;border-radius:8px;padding:14px 18px;font-size:14.5px;line-height:1.6;margin-top:14px!important}
+.ab-f b{color:#ff9470}
+.mat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mt{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.mt-l{font-weight:600;font-size:15px;color:#262533}
+.mt-d{font-size:13px;color:#94a3b8;margin-top:2px}
+.lnk{font-size:13px;font-weight:600;color:#f86b3c;text-decoration:none;border:1px solid #f86b3c;border-radius:20px;padding:6px 14px;white-space:nowrap}
+.lnk.todo{color:#b45309;border-color:#fcd34d;background:#fffbeb}
+.pps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pp{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.pp-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:6px}
+.pp p{font-size:14.5px;line-height:1.6;color:#475569}
+.callout{background:#262533;border-radius:12px;padding:26px 30px;margin-top:16px}
+.callout-h{font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:#fff;margin-bottom:12px}
+.callout p{font-size:15px;line-height:1.68;color:rgba(244,246,251,.72);margin-bottom:10px}
+.callout p:last-child{margin-bottom:0}
+.callout b{color:#ff9470}
+.note{background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:18px 22px;font-size:14.5px;line-height:1.65;color:#78350f}
+.note b{color:#78350f}
+.closing{background:#262533;padding:90px 60px;text-align:center}
+.closing img{height:40px;margin-bottom:30px}
+.closing h2{font-family:'DM Serif Display',Georgia,serif;font-size:42px;color:#fff;margin-bottom:0}
+.closing .rule{margin:22px auto 24px}
+.closing p{color:rgba(244,246,251,.55);font-size:16px;line-height:1.6}
+.closing .foot{margin-top:34px;font-size:12px;color:rgba(244,246,251,.3)}
+@media(max-width:860px){.tks,.ab,.mat,.pps{grid-template-columns:1fr}.cover,.wrap,.closing{padding-left:24px;padding-right:24px}.cover-body{grid-template-columns:1fr}.cover-art{display:none}.cover-body h1{font-size:36px}}
+.rhead{background:#262533;padding:34px 40px 30px}
+.rhead-in{max-width:1060px;margin:0 auto}
+.rhead .lock{margin-bottom:26px}
+.rhead-h1{font-family:'DM Serif Display',Georgia,serif;font-size:40px;line-height:1.18;font-weight:400;color:#fff;margin-bottom:24px}
+.rhead-f{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+@media(max-width:700px){.rhead{padding:28px 22px}.rhead-h1{font-size:30px}}
+.foot-bar{background:#262533;padding:28px 40px;text-align:center}
+.foot-bar p{font-size:13.5px;color:rgba(244,246,251,.55);line-height:1.6;max-width:640px;margin:0 auto 10px}
+.foot-bar span{font-size:11.5px;color:rgba(244,246,251,.3)}
+.assess{background:#fff;border:1px solid #dce2ee;border-top:4px solid #f86b3c;border-radius:12px;padding:28px 30px}
+.assess-split{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:24px}
+@media(max-width:780px){.assess-split{grid-template-columns:1fr;gap:20px}}
+.assess-part-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.assess-part-h b{font-size:15px;color:#262533}
+.assess-split p{font-size:14.5px;line-height:1.62;color:#475569}
+.assess-pill{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#fff1ee;color:#c2410c;border-radius:20px;padding:3px 10px}
+.assess-pill.purple{background:#f5f3ff;color:#7c3aed}
+.assess-topics{display:flex;flex-wrap:wrap;gap:6px}
+.assess-topics span{font-size:12px;color:#64748b;background:#f7f9fc;border:1px solid #dce2ee;border-radius:20px;padding:4px 11px}
+.assess-foot{border-top:1px solid #eef1f7;padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.assess-milestones{margin-bottom:22px}
+.assess-note{font-size:13px;color:#94a3b8}
+.assess-btn{display:inline-flex;align-items:center;gap:9px;background:#f86b3c;color:#fff;text-decoration:none;font-size:13px;font-weight:700;border-radius:10px;padding:12px 22px;white-space:nowrap;transition:background .15s,transform .15s}
+.assess-btn:hover{background:#e0552a;transform:translateY(-1px)}
+.assess-btn i{font-style:normal;display:inline-block;transition:transform .15s}
+.assess-btn:hover i{transform:translateX(3px)}
+</style></head><body>
+
+<div class="rhead">
+  <div class="rhead-in">
+    <div class="lock"><img class="acc" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMTE2IDQ2NiIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTE5OTYuMSAxODYuMjA0QzIwMTcuMTMgMTQ3Ljg1IDIwNTcuOTYgMTI4LjA1NSAyMTE1LjQ5IDEyOC4wNTVWMTg1LjU4NUMyMTEwLjU0IDE4NC45NjcgMjEwNi4yMSAxODQuOTY3IDIxMDEuODggMTg0Ljk2N0MyMDM4LjE3IDE4NC45NjcgMTk5OC41NyAyMjMuOTM5IDE5OTguNTcgMjk1LjY5OFY0NTkuMDExSDE5MzkuMTlWMTMxLjE0OEgxOTk2LjFWMTg2LjIwNFoiIGZpbGw9IiMwNjJGN0UiLz4KICA8cGF0aCBkPSJNMTg3NS4yOCAyOTYuOTM1QzE4NzUuMjggMzAxLjg4NCAxODc0LjY2IDMwOS4zMDcgMTg3NC4wNSAzMTQuODc1SDE2MDguMDRDMTYxNS40NyAzNzIuNDA2IDE2NjEuODYgNDEwLjc1OSAxNzI2LjgyIDQxMC43NTlDMTc2NS4xNyA0MTAuNzU5IDE3OTcuMzQgMzk3Ljc2OSAxODIxLjQ2IDM3MS4xNjhMMTg1NC4yNSA0MDkuNTIyQzE4MjQuNTYgNDQ0LjE2NCAxNzc5LjQgNDYyLjcyMyAxNzI0Ljk2IDQ2Mi43MjNDMTYxOS4xOCA0NjIuNzIzIDE1NDguNjYgMzkyLjgyIDE1NDguNjYgMjk1LjA3OUMxNTQ4LjY2IDE5Ny45NTggMTYxOC41NiAxMjguMDU1IDE3MTMuMjEgMTI4LjA1NUMxODA3Ljg1IDEyOC4wNTUgMTg3NS4yOCAxOTYuMTAyIDE4NzUuMjggMjk2LjkzNVpNMTcxMy4yMSAxNzguMTYyQzE2NTYuMjkgMTc4LjE2MiAxNjE0LjIzIDIxNi41MTYgMTYwOC4wNCAyNzIuMTkxSDE4MTguMzdDMTgxMi4xOCAyMTcuMTM1IDE3NzAuNzQgMTc4LjE2MiAxNzEzLjIxIDE3OC4xNjJaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE0MjQuNzUgNDU5LjAwOVYwSDE0ODQuMTRWNDU5LjAwOUgxNDI0Ljc1WiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0xMzYwLjg0IDI5Ni45MzVDMTM2MC44NCAzMDEuODg0IDEzNjAuMjMgMzA5LjMwNyAxMzU5LjYxIDMxNC44NzVIMTA5My42MUMxMTAxLjAzIDM3Mi40MDYgMTE0Ny40MiA0MTAuNzU5IDEyMTIuMzggNDEwLjc1OUMxMjUwLjczIDQxMC43NTkgMTI4Mi45IDM5Ny43NjkgMTMwNy4wMyAzNzEuMTY4TDEzMzkuODEgNDA5LjUyMkMxMzEwLjEyIDQ0NC4xNjQgMTI2NC45NiA0NjIuNzIzIDEyMTAuNTIgNDYyLjcyM0MxMTA0Ljc0IDQ2Mi43MjMgMTAzNC4yMiAzOTIuODIgMTAzNC4yMiAyOTUuMDc5QzEwMzQuMjIgMTk3Ljk1OCAxMTA0LjEyIDEyOC4wNTUgMTE5OC43NyAxMjguMDU1QzEyOTMuNDIgMTI4LjA1NSAxMzYwLjg0IDE5Ni4xMDIgMTM2MC44NCAyOTYuOTM1Wk0xMTk4Ljc3IDE3OC4xNjJDMTE0MS44NiAxNzguMTYyIDEwOTkuNzkgMjE2LjUxNiAxMDkzLjYxIDI3Mi4xOTFIMTMwMy45M0MxMjk3Ljc1IDIxNy4xMzUgMTI1Ni4zIDE3OC4xNjIgMTE5OC43NyAxNzguMTYyWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik04NzcuNDE0IDQ2Mi43MjNDNzc2LjU4IDQ2Mi43MjMgNzA0LjIwMyAzOTIuODIgNzA0LjIwMyAyOTUuMDc5QzcwNC4yMDMgMTk3LjMzOSA3NzYuNTggMTI4LjA1NSA4NzcuNDE0IDEyOC4wNTVDOTM2LjE4MiAxMjguMDU1IDk4NS4wNTIgMTUyLjE4IDEwMTEuMDMgMTk3Ljk1OEw5NjUuODc1IDIyNy4wMzJDOTQ0Ljg0MiAxOTQuODY1IDkxMi42NzUgMTgwLjAxOCA4NzYuNzk1IDE4MC4wMThDODEyLjQ2IDE4MC4wMTggNzY0LjIwOCAyMjUuMTc2IDc2NC4yMDggMjk1LjA3OUM3NjQuMjA4IDM2Ni4yMiA4MTIuNDYgNDEwLjc1OSA4NzYuNzk1IDQxMC43NTlDOTEyLjY3NSA0MTAuNzU5IDk0NC44NDIgMzk1LjkxMyA5NjUuODc1IDM2My43NDVMMTAxMS4wMyAzOTIuMjAxQzk4NS4wNTIgNDM3Ljk3OCA5MzYuMTgyIDQ2Mi43MjMgODc3LjQxNCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik01NDcuMzk4IDQ2Mi43MjNDNDQ2LjU2NSA0NjIuNzIzIDM3NC4xODggMzkyLjgyIDM3NC4xODggMjk1LjA3OUMzNzQuMTg4IDE5Ny4zMzkgNDQ2LjU2NSAxMjguMDU1IDU0Ny4zOTggMTI4LjA1NUM2MDYuMTY2IDEyOC4wNTUgNjU1LjAzNiAxNTIuMTggNjgxLjAxOCAxOTcuOTU4TDYzNS44NiAyMjcuMDMyQzYxNC44MjcgMTk0Ljg2NSA1ODIuNjU5IDE4MC4wMTggNTQ2Ljc4IDE4MC4wMThDNDgyLjQ0NCAxODAuMDE4IDQzNC4xOTMgMjI1LjE3NiA0MzQuMTkzIDI5NS4wNzlDNDM0LjE5MyAzNjYuMjIgNDgyLjQ0NCA0MTAuNzU5IDU0Ni43OCA0MTAuNzU5QzU4Mi42NTkgNDEwLjc1OSA2MTQuODI3IDM5NS45MTMgNjM1Ljg2IDM2My43NDVMNjgxLjAxOCAzOTIuMjAxQzY1NS4wMzYgNDM3Ljk3OCA2MDYuMTY2IDQ2Mi43MjMgNTQ3LjM5OCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0zMjkuNTA0IDMwMC44NjlDMzI5LjUwNCAzMzMuNDU0IDMxOS44NDEgMzY1LjMwNyAzMDEuNzM4IDM5Mi40QzI4My42MzUgNDE5LjQ5NCAyNTcuOTA0IDQ0MC42MSAyMjcuOCA0NTMuMDhDMTk3LjY5NSA0NjUuNTUgMTY0LjU2OSA0NjguODEyIDEzMi42MTEgNDYyLjQ1NUMxMDAuNjUyIDQ1Ni4wOTggNzEuMjk1OCA0NDAuNDA3IDQ4LjI1NDggNDE3LjM2NkMyNS4yMTM4IDM5NC4zMjUgOS41MjI3MyAzNjQuOTY5IDMuMTY1NzQgMzMzLjAxMUMtMy4xOTEyNSAzMDEuMDUyIDAuMDcxMzg1MiAyNjcuOTI2IDEyLjU0MTEgMjM3LjgyMUMyNS4wMTA4IDIwNy43MTcgNDYuMTI3NCAxODEuOTg2IDczLjIyMDcgMTYzLjg4M0MxMDAuMzE0IDE0NS43OCAxMzIuMTY3IDEzNi4xMTcgMTY0Ljc1MiAxMzYuMTE3VjE4Ni4zNjZDMTQyLjEwNSAxODYuMzY2IDExOS45NjcgMTkzLjA4MSAxMDEuMTM3IDIwNS42NjNDODIuMzA3NCAyMTguMjQ1IDY3LjYzMTIgMjM2LjEyOCA1OC45NjQ4IDI1Ny4wNTFDNTAuMjk4MyAyNzcuOTczIDQ4LjAzMDcgMzAwLjk5NiA1Mi40NDg5IDMyMy4yMDhDNTYuODY3IDM0NS40MTkgNjcuNzcyNCAzNjUuODIyIDgzLjc4NiAzODEuODM1Qzk5Ljc5OTUgMzk3Ljg0OSAxMjAuMjAyIDQwOC43NTQgMTQyLjQxNCA0MTMuMTcyQzE2NC42MjUgNDE3LjU5IDE4Ny42NDggNDE1LjMyMyAyMDguNTcxIDQwNi42NTZDMjI5LjQ5MyAzOTcuOTkgMjQ3LjM3NiAzODMuMzE0IDI1OS45NTggMzY0LjQ4NEMyNzIuNTQgMzQ1LjY1NCAyNzkuMjU1IDMyMy41MTYgMjc5LjI1NSAzMDAuODY5SDMyOS41MDRaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE5My4zOTEgMTM2LjExN0gzMjkuNTA2VjE4Ni42OTZIMTkzLjM5MVYxMzYuMTE3WiIgZmlsbD0iIzAwRDJFRSIvPgogIDxwYXRoIGQ9Ik0zMjkuNSAxNDUuNzg5VjI3NS4yMUgyNzguMTc4VjE0NS43ODlIMzI5LjVaIiBmaWxsPSIjMDBEMkVFIi8+CiAgPHBhdGggZD0iTTMyOS41IDMwMS4yNDJWNDYwLjQxNkgyNzguMTc4VjMwMS4yNDJIMzI5LjVaIiBmaWxsPSIjMDYyRjdFIi8+Cjwvc3ZnPgo=" alt="Acceler"><span class="div"></span><img class="cli" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAA+CAYAAAAIyajNAAAB80lEQVR4nO2bUXKDMAxERSdXaS/Q+58t+elQOiUxLUbaXe37zUzsRM8rA2b5eP+8xzmWwednv//oOJnM+k1QvFVPgBBJESJyZEBa0eY5C1MyIKxIhDlcBpMM5jqWiDwZZrWKypUpnQoRTgazIVMGhXRQZK2Lk+EYLQTMlsHpgMWPejgZxrQRzzL05VdKV8jA1CrapEKEk8FsqJKBKR0U2f3/b9mzICLr0fvVRwgOU9kmOqQD1RNb7xn2QRbsMiyDWamWAbFVKB7TO0S1DAYIBBkQ0+EsdKkQgSEDEkhCpYMig1I6UKZCBI4MCCCIVAqSDErpQAmSDJW0vZzcYhnMCpoMFa3CqfAFmgymEEQZGDeS9KkQgSlDJr7y2IAqA1M6SKRCBK4MpoDuMsis6hkgy8DQKqRkQpYhC6mCngFdBuR0kJMIXYYs5Ar7HxhkQEwHSXkYZDBJWIZvJFf7X2CRAalVyErDIkMWsoU+ApMMCOkgLQuTDFlIF/wVM17Jn31D51Uxlknj3QfjPBtbGsRk8BmDIhBlGJGxd5BPgT1QZUBLhxZyoMqAQAsBtrDKkHmZ2UYKZBkQWkUbESKwZRiBcBNKCnQZXKhE0GUY4XSYCIMMLlQSDDKYJBRkcKuYBIsM7QuVAYsMI5wOE1CRIaLZDaIreAB7CzUKivZ9OAAAAABJRU5ErkJggg==" alt="LVT"></div>
+    <h1 class="rhead-h1">Day 3 Recap<br>AI-Assisted Development Program</h1>
+    <div class="rhead-f">
+      <span class="pill">Day 3 of 4 &middot; 15 July 2026</span>
+      <div class="cover-meta">
+        <span><i></i>Anti-Slop &amp; Self-Verify</span>
+        <span><i></i>Multi-Hat Review</span>
+        <span><i></i>GitHub Actions</span>
+        <span><i></i>OWASP Security</span>
+        <span><i></i>Permissions</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="start">
+
+  <div class="sec">
+    <div class="eyebrow">What We Covered</div>
+    <h2>Five parts, one gate.</h2>
+    <p class="sub">Day 2 was about directing the tool with discipline. Day 3 was about not trusting it &mdash; building the gates a team can actually stand behind before AI-written code ships: catching your own mistakes first, getting judgments that aren't the author's, wiring those reviews into GitHub itself, hunting real vulnerabilities instead of trusting a tool's word for it, and setting permissions that hold without slowing you down.</p>
+
+  <div class="part">
+    <div class="part-n">01</div>
+    <div class="part-b">
+      <h3>Anti-Slop &amp; Reviewing AI Code</h3><p class="part-s">Catching the bugs that survive because the code looks right</p>
+      <ul><li><b>The day's one idea:</b> an AI first draft that looks idiomatic is the most dangerous kind of code, because tidiness disarms the reviewer &mdash; you read the shape, nod, and move on. The shape is what the model gets right; the logic is what it gets wrong.</li><li><b>What slop looks like:</b> plausible-but-wrong helpers (an inverted comparison that reads perfectly), copy-paste drift (a status/route/field never adapted), dead branches (conditions that can't be true given the data model), tests that assert nothing, and off-by-one errors. A twelve-line handler can hide four of these at once, all cleared by one vacuous test.</li><li><b>The fix is a system, not a harder stare:</b> a scored checklist read for intent in five passes &mdash; correctness &amp; logic, copy-paste drift, error handling, tests that assert nothing, and hygiene.</li><li><b><code>/self-verify</code></b> wires this into the agent itself: deterministic gates first (lint/type-check &rarr; tests &rarr; build, never present over a failing gate), then a structured self-critique re-reading the diff for logic, drift, error-handling, weak tests, and scope creep, then present the gate results, the critique, and the diff together.</li><li><b>Scaffolding vs. gate:</b> line-by-line reading builds your instinct for what slop looks like, but it fades as tooling matures &mdash; you do less of it over time. Tests, lint, and contracts are permanent gates: deterministic, tireless, no judgment call required. A green test that asserts nothing is still red; strengthen the assertion and re-run.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">02</div>
+    <div class="part-b">
+      <h3>Adversarial Review: Multi-Hat Thinking</h3><p class="part-s">Independent judgments a single reviewer blends away</p>
+      <ul><li><b>The problem:</b> one reviewer asked for security, design, performance, and correctness all at once tends to look solid and still miss the IDOR. Wearing four hats at once means doing each one poorly.</li><li><b>Three hats, one session each, no cross-talk:</b> <code>/hat-security</code> (the attacker's lens &mdash; injection, IDOR, SSRF, XSS, hard-coded secrets), <code>/hat-design</code> (the six-months lens &mdash; copy-paste drift, wrong boundaries, misleading names, what will hurt to maintain), and <code>/hat-blackbox &lt;url&gt;</code> (contract-only &mdash; it may <b>not</b> read the source, only <code>contracts/openapi.yaml</code>).</li><li><b>Why separate sessions matter:</b> one shared context blends the conflicts away; three independent vantages stay sharp and are allowed to disagree &mdash; the security and design hats will clash over an allowlisted <code>ORDER BY</code>, and that clash is the point, not a bug.</li><li><b>The black-box hat can't be talked out of a bug.</b> Because it sees only the contract, never the implementation, it can't anchor to the code's intent or quietly weaken a test to pass &mdash; it tried the obvious cross-tenant request the contract promised was blocked, and caught the IDOR that a reviewer reading tidy code never would.</li><li><b>Keep a human involved:</b> never ship AI code covered only by AI-written tests. At least one human-authored assertion belongs on anything that matters &mdash; the kind of test an agent's own happy-path suite would never think to write.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">02.1</div>
+    <div class="part-b">
+      <h3>GitHub Actions</h3><p class="part-s">Running the same review gates automatically, on every PR</p>
+      <ul><li><b>The hands-on:</b> a self-walkthrough guide (shared live in chat) had learners fork <code>anshajk/claude-security</code>, install the Claude GitHub App, add <code>ANTHROPIC_API_KEY</code> as an Actions secret, enable workflows on the fork, and open a PR &mdash; roughly 7&ndash;8 people completed it live. The OWASP-specific review only triggers when the change lands inside <code>backend/src/**</code>, <code>frontend/**</code>, or <code>contracts/openapi.yaml</code>.</li><li><b><code>anthropics/claude-code-action@v1</code></b> runs Claude Code as a workflow step &mdash; your code stays on GitHub's own runners. Two ways to trigger it: <b>interactive</b> (an <code>@claude</code> mention in an issue or PR comment) or <b>automation</b> (a <code>prompt:</code> field firing on <code>pull_request</code>, <code>schedule</code>, or <code>workflow_dispatch</code>).</li><li><b>Two separate lanes, two separate runners:</b> the <b>deterministic</b> lane (<code>trust-gate-ci</code> &mdash; lint, build, test, a secret scan) is what actually blocks a merge. The <b>judgment</b> lane (<code>claude-code-action@v1</code> posting hat and OWASP findings as PR comments) only advises &mdash; severity never fails a build by design. Want a finding to block? Write the assertion into the deterministic suite; a review comment is a claim, a failing test is proof.</li><li><b>Decisions baked into the workflow file:</b> <code>paths:</code> wakes the job only on the vulnerable surface, <code>concurrency</code> with <code>cancel-in-progress</code> means a force-push cancels the stale run, <code>permissions:</code> scopes <code>GITHUB_TOKEN</code> (it only reaches Claude if you pass it in explicitly), and checkout has to run before the action or <code>.claude/skills</code> never lands.</li><li><b>The headless trap:</b> in CI there's no human to answer a prompt, so an <code>ask</code> rule effectively means <b>deny</b> &mdash; a <code>Bash(curl:*)</code> ask rule silently kills every black-box-hat probe. Fix: delete the ask rule and run <code>--permission-mode dontAsk</code> with an explicit allow instead; <code>bypassPermissions</code> is not the fix, since it survives the trap but also approves every tool, not just the ones you listed.</li><li><b>Setup</b> is <code>/install-github-app</code> (repo admin only) &mdash; wires the GitHub App and the <code>ANTHROPIC_API_KEY</code> secret, scoped to Contents, Issues, and Pull requests (read and write). CODEOWNERS on <code>.claude/**</code> and <code>.github/**</code> means changing the rules themselves needs a human review too.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">03</div>
+    <div class="part-b">
+      <h3>Security: Secure-by-Default &amp; OWASP</h3><p class="part-s">Catching vulnerabilities while the agent writes, not after</p>
+      <ul><li><b>Five vulnerability classes</b> showed up in the day's Command Center build: injection (user text glued into a query runs as code), broken access control / IDOR (a missing tenant filter), SSRF (server fetches a user-supplied URL), stored XSS (untrusted input rendered as HTML/JS), and secrets/misconfig. One idea to hold onto: <b>authenticated &ne; authorized</b> &mdash; logging in proves who you are, not that you're allowed to see this row.</li><li><b>A tool flag is a claim, not a proof.</b> Every OWASP pass produces three buckets: caught (real, fix it and record the decision), false positive (dismiss it in writing &mdash; an allowlist-guarded <code>ORDER BY</code> is reviewed-safe, not flagged), and caught-but-unproven (a human cross-tenant test proves it either way).</li><li><b>The <code>owasp-review</code> skill</b> lives at <code>.claude/skills/owasp-review/</code> so every engineer inherits identical checks, applying secure patterns as the agent writes. It runs a fixed five-category method in order: injection, IDOR, SSRF, XSS, secrets &amp; config &mdash; each finding reported as severity, what, exploit, fix, and confidence.</li><li><b>An independent <code>security-reviewer</code> subagent</b> (<code>.claude/agents/security-reviewer.md</code>, tools scoped to <code>Read, Grep, Glob, Bash(git diff:*)</code>) runs a second, separate OWASP pass on a diff &mdash; judgment, distinct from the skill's automatic coverage. Paired with a deterministic <code>secret-scan.sh</code> hook on <code>PreToolUse</code> that blocks a planted secret outright: two different gate types, and you need both.</li><li><b><code>/triage</code></b> turns a flagged finding into a written verdict: locate the exact file:line, trace input to sink (is there a tenant predicate for authz?), reach a verdict &mdash; real or false-positive &mdash; and record it. A false positive dismissed without a written reason is indistinguishable from a real bug ignored.</li><li><b>The other OWASP list &mdash; AST10:</b> the web Top 10 is about bugs in your app; the Agentic Skills Top 10 is about the risk of the skills and plugins you install into your agent, since a skill runs with your agent's privileges. The <b>lethal trifecta</b>: a skill is dangerous once it can read private data, see untrusted content, <i>and</i> reach the outside network, all three at once. That's exactly why this bootcamp ships its own vetted, self-contained <code>owasp-review</code> skill &mdash; no marketplace install, nothing pulled from the network.</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">04</div>
+    <div class="part-b">
+      <h3>Permissions Without Constant Interruptions</h3><p class="part-s">A committed team standard, not a per-session judgment call</p>
+      <ul><li><b>How Claude Code decides:</b> every tool call is checked against three lists in <code>.claude/settings.json</code> &mdash; <code>deny</code> (never allowed), <code>ask</code> (prompt every time), <code>allow</code> (run without asking) &mdash; in that order, first match wins. How specific a rule is doesn't matter; a broad <code>deny Bash(aws *)</code> beats a narrow <code>allow Bash(aws s3 ls)</code>. And rules are enforced by Claude Code, not the AI &mdash; "don't do X" in a prompt or CLAUDE.md is a request, not a fence.</li><li><b>Sort every action into allow / ask / deny:</b> allow what's safe, frequent, and easy to undo (reads, tests, lint, <code>curl localhost</code>); ask before anything powerful or external (<code>git push</code>, <code>WebFetch</code>, edits to <code>.claude/</code>); deny what's never acceptable regardless of context (<code>.env</code> reads, the cloud metadata IP, <code>rm -rf</code>, force-push). The physical-action rule: never auto-allow anything irreversible or with a real-world effect.</li><li><b>A rule that looks safe can still be wide open.</b> An <code>ask: Bash(curl example.com *)</code> rule doesn't stop <code>curl -X GET example.com</code>, a different host, a redirect, or a variable holding the URL &mdash; fix is to deny curl/wget outright and allow only <code>WebFetch(domain:example.com)</code>. Likewise <code>allow: Bash(npx *)</code> also allows <code>npx rimraf .</code>; name the exact inner command instead, one rule per tool.</li><li><b>Where rules live:</b> User (<code>~/.claude/</code>, just you everywhere), Project (<code>.claude/settings.json</code>, committed, everyone on the repo), Local (<code>.claude/settings.local.json</code>, gitignored, just you on this repo), and Managed (pushed by IT/DevOps, the whole company, can't be overridden). When they disagree, Managed &gt; Local &gt; Project &gt; User &mdash; but the deny lists always merge together regardless of level.</li><li><b>One rule has a blind spot, so layer them:</b> a permission rule stops the agent's own tools and known commands, but not a script the agent writes that opens the file itself. Defense in depth is three layers &mdash; the permission rule, a <code>PreToolUse</code> hook (your own detection script), and the OS sandbox &mdash; each catching what the one before it misses. Gate the gate: put CODEOWNERS on <code>.claude/**</code> too, so changing the rules themselves needs a human review.</li></ul>
+    </div>
+  </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Key Takeaways</div>
+    <h2>If you remember six things.</h2>
+    <div class='tks'><div class="tk"><div class="tk-h">Tidiness disarms the reviewer</div><p>An AI draft that looks idiomatic is the most dangerous kind of code &mdash; you read the shape, nod, and move on. The shape is what the model gets right; the logic is what it gets wrong.</p></div><div class="tk"><div class="tk-h">Independent hats beat one blended pass</div><p>A single reviewer asked for everything at once tends to miss the IDOR. The value of the panel isn't any one hat &mdash; it's the deltas between them.</p></div><div class="tk"><div class="tk-h">Only the deterministic lane can block a merge</div><p>GitHub Actions runs Claude's review automatically on every PR, but severity never fails a build by design. Want a finding to block? Write it as an assertion in the test suite, not a comment.</p></div><div class="tk"><div class="tk-h">A tool flag is a claim, not a proof</div><p>Every OWASP pass produces caught, false-positive, and caught-but-unproven buckets. Triage turns a flag into a written verdict &mdash; a dismissal with no reason is indistinguishable from a bug ignored.</p></div><div class="tk"><div class="tk-h">Deny, then ask, then allow &mdash; first match wins</div><p>Specificity doesn't reorder the check. A broad deny always beats a narrow allow, and every level's deny rules merge together regardless of where they're set.</p></div><div class="tk"><div class="tk-h">No single gate is enough</div><p>A permission rule stops the obvious path; a hook catches what slips past an allow rule; a sandbox survives a script the agent writes itself. Defense in depth means layering all three.</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Cheat Sheet</div>
+    <h2>Commands, gates, and the repo map.</h2>
+    <table><tr><td><code>/self-verify</code></td><td>Gates (lint/type-check &rarr; tests &rarr; build) &rarr; structured self-critique &rarr; present the diff</td></tr><tr><td><code>/hat-security</code> &middot; <code>/hat-design</code> &middot; <code>/hat-blackbox &lt;url&gt;</code></td><td>Three independent review lenses &mdash; run in separate sessions, no cross-talk</td></tr><tr><td><code>/triage &lt;finding&gt;</code></td><td>Locate &rarr; trace input to sink &rarr; verdict (real / false-positive) &rarr; record in writing</td></tr><tr><td><code>/permissions</code></td><td>See every active allow / ask / deny rule</td></tr><tr><td><code>claude doctor</code></td><td>Check that <code>settings.json</code> is valid</td></tr><tr><td>deny &rarr; ask &rarr; allow</td><td>Rule check order &mdash; first match wins, not the most specific rule</td></tr><tr><td><code>make setup</code> / <code>make test</code></td><td>One-time pnpm install (backend + frontend) / vitest, green on the baseline</td></tr><tr><td><code>make dev-api</code> / <code>make dev-web</code></td><td>Fastify Command Center &rarr; :8000 (<code>/health</code>) / Vite dashboard &rarr; :5173</td></tr><tr><td><code>make slop</code> / <code>make reset</code></td><td>Apply planted defects to <code>slop/part-1</code> / back to the clean baseline</td></tr></table>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Questions We Parked or Rushed</div>
+    <h2>The answers we owed you.</h2>
+    <p class="sub">Some of these got a hurried answer on the day and some got none at all. Here they are properly.</p>
+    <div class="pk"><div class="pk-q">I got behind and missed how the agent was kicked off so that the OWASP agent ran &mdash; can you share how the security-reviewer agent was actually run?</div><div class="pk-a">This never got picked up live, so here's the clean version. The demo used two distinct mechanisms, and the repo's own map labels the difference: the <code>owasp-review</code> <b>skill</b> is marked <code>(auto)</code> &mdash; it's project-scoped at <code>.claude/skills/owasp-review/</code>, and Claude Code loads it automatically into context whenever a task's description matches what the skill covers, so simply asking for a security pass over <code>backend/src/api/</code> is enough to trigger it. The <code>security-reviewer</code> <b>subagent</b> (<code>.claude/agents/security-reviewer.md</code>) is a separate mechanism: a distinct reasoning session with its own scoped tools (<code>Read, Grep, Glob, Bash(git diff:*)</code>) that runs an independent second pass. Subagents like this are typically invoked either by Claude routing to them automatically when a task matches their stated purpose, or by asking for them by name &mdash; "run the security-reviewer subagent on this diff." The point of running both in the demo was that they're independent checks, not one asking the other to confirm.</div></div><div class="pk"><div class="pk-q">Claude often proposes commands using <code>&amp;&amp;</code> or <code>|</code>. Will Claude Code catch the follow-up commands in a chain like <code>ls &amp;&amp; rm -rf .</code> separately, or does approving the first part clear the whole line?</div><div class="pk-a">This came in right at the end of the session and didn't get answered live &mdash; and it's really the same fragility Part 4 already covered for <code>curl example.com</code>, just applied to a different operator. Claude Code's documented behavior is that each subcommand in a chain (split on <code>&amp;&amp;</code>, <code>;</code>, or <code>|</code>) is meant to be evaluated on its own &mdash; approving <code>git status &amp;&amp; npm test</code> is supposed to save a rule for <code>npm test</code> alone, not for the whole compound string. In practice, this has been an active area of hardening: several reports against Claude Code describe cases where a chained command wasn't fully re-evaluated segment by segment. The safe takeaway matches what Part 4 already taught: don't lean on a narrow allow/ask rule to catch a compound command reliably &mdash; deny broadly, and allow only the exact single command you've verified is safe.</div></div><div class="pk"><div class="pk-q">Managed settings get &ldquo;pushed by IT.&rdquo; Where does that actually go &mdash; what file, what mechanism?</div><div class="pk-a">The precedence got covered live (Managed beats Local beats Project beats User), but not the actual delivery mechanism, so here it is. Managed settings are OS-specific files: macOS at <code>/Library/Application Support/ClaudeCode/managed-settings.json</code>, Linux/WSL at <code>/etc/claude-code/managed-settings.json</code>, and Windows at <code>C:\Program Files\ClaudeCode\managed-settings.json</code>. IT typically deploys that file through the tooling they already use for fleet policy &mdash; an MDM profile on macOS (Jamf, Kandji), Group Policy or Intune on Windows &mdash; rather than a person editing it by hand on every machine. There's also a server-managed option that pushes configuration from the Claude.ai admin console directly, with no file on disk at all.</div></div><div class="pk"><div class="pk-q">Are permissions reflected in the model's context, so it doesn't waste time trying something it isn't allowed to do?</div><div class="pk-a">This got a quick "no" live, plus a mention that the model gets "fine-tuned" once it hits a rejection &mdash; worth expanding on, since that phrase can land two different ways. Permission rules aren't injected into the system prompt or shown to the model up front. The agent finds out a rule exists only by attempting the action and getting a rejection back as a tool result &mdash; the same trial-and-error either way, every time. What's happening after that is in-context behavior within that same session: Claude reads the rejection like any other tool result and generally won't retry the identical blocked action again in that conversation. That's the agent reacting to feedback already sitting in its own transcript, not the underlying model being retrained on your individual denials.</div></div><div class="pk"><div class="pk-q">Is there a suggested process for reviewing skills, plugins, and MCPs before letting engineers use them &mdash; and do Cursor or Claude Code enforce anything like AST10 before a skill reaches their marketplace?</div><div class="pk-a">This one got acknowledged live rather than answered in full &mdash; it's already being discussed with sec ops, and a company-wide vetting process is its own decision, separate from what one training session can settle. What today's material does give you is the closest thing to a starting method: the lethal-trifecta test from Part 3 (does the skill read private data, see untrusted content, and reach the network &mdash; all three at once?), plus the AST10 checklist's own guidance to prefer reputable sources, read a skill before installing it, pin versions, and treat adoption as its own security review. Neither Cursor nor Claude Code's marketplaces are described in today's materials as enforcing AST10 automatically &mdash; part of why this bootcamp ships its own vetted, self-contained <code>owasp-review</code> skill instead of pulling one from a marketplace. A formal, LVT-wide review process for engineers browsing marketplaces is still coming, separately from today.</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Quiz Solutions</div>
+    <h2>The seven checkpoint questions, answered.</h2>
+    <div class="q"><div class="q-n">Q1</div><div class="q-b"><p class="q-t">Why is an AI first draft that looks idiomatic the most dangerous kind of code?</p><ul class="q-o"><li class="">It is written faster than a human would write it</li><li class="">Idiomatic code cannot be unit-tested</li><li class="ok">Tidiness disarms the reviewer &mdash; you read the shape, nod, and move on <span class=tick>&#10003;</span></li><li class="">The compiler skips its checks on idiomatic code</li></ul><p class="q-w">The shape is what the model gets right; the logic is what it gets wrong &mdash; and a clean shape talks the reviewer out of looking closely.</p></div></div><div class="q"><div class="q-n">Q2</div><div class="q-b"><p class="q-t">In <code>/self-verify</code>, what do you do with a green test that asserts nothing?</p><ul class="q-o"><li class="ok">Treat it as red &mdash; strengthen the assertion and re-run <span class=tick>&#10003;</span></li><li class="">Accept it; a passing test is a passing test</li><li class="">Delete it so the suite stays green</li><li class="">Leave it for the security hat to handle</li></ul><p class="q-w">A vacuous test green-lights whatever bugs it should have caught. It only counts once it can actually fail.</p></div></div><div class="q"><div class="q-n">Q3</div><div class="q-b"><p class="q-t">Why run three separate single-hat reviewers instead of one wearing all four hats?</p><ul class="q-o"><li class="">Running them in parallel is faster</li><li class="">Each hat needs a different LLM</li><li class="">A single hat can only check formatting</li><li class="ok">One agent blends the conflicts away; independent hats go deep and can disagree <span class=tick>&#10003;</span></li></ul><p class="q-w">The value isn't any one hat's output &mdash; it's the deltas between them, and the tradeoffs they surface by disagreeing.</p></div></div><div class="q"><div class="q-n">Q4</div><div class="q-b"><p class="q-t">What lets the black-box hat catch an IDOR the all-in-one reviewer misses?</p><ul class="q-o"><li class="">It reviews the implementation line-by-line</li><li class="ok">It sees only the contract, not the code &mdash; so tidy code can't talk it out of the bug <span class=tick>&#10003;</span></li><li class="">It runs with elevated database privileges</li><li class="">It rewrites weak tests until they pass</li></ul><p class="q-w">Reading only <code>contracts/openapi.yaml</code> means it can't anchor to the code's intent or excuse the gap the way a reviewer reading clean code might.</p></div></div><div class="q"><div class="q-n">Q5</div><div class="q-b"><p class="q-t">What does &ldquo;authenticated &ne; authorized&rdquo; mean?</p><ul class="q-o"><li class="">You must authenticate twice for risky actions</li><li class="">Authorization always happens before authentication</li><li class="ok">Logging in proves who you are, not that you may see this row <span class=tick>&#10003;</span></li><li class="">Only administrators are ever authorized</li></ul><p class="q-w">A valid session proves identity. It says nothing about whether that identity is allowed to see this particular record.</p></div></div><div class="q"><div class="q-n">Q6</div><div class="q-b"><p class="q-t">A skill hits the &ldquo;lethal trifecta&rdquo; when it can do all three of what?</p><ul class="q-o"><li class="ok">Read private data, see untrusted content, and reach the outside <span class=tick>&#10003;</span></li><li class="">Read code, write code, and run tests</li><li class="">Install plugins, auto-update, and log errors</li><li class="">Use the network, the disk, and the GPU</li></ul><p class="q-w">All three together is what makes a skill dangerous &mdash; any one or two alone is a much smaller risk.</p></div></div><div class="q"><div class="q-n">Q7</div><div class="q-b"><p class="q-t">In what order does Claude Code check permission rules, and which wins?</p><ul class="q-o"><li class="">allow &rarr; ask &rarr; deny; the most specific rule wins</li><li class="ok">deny &rarr; ask &rarr; allow; the first match wins &mdash; a broad deny beats a narrow allow <span class=tick>&#10003;</span></li><li class="">ask &rarr; allow &rarr; deny; the last match wins</li><li class="">There is no order; the AI decides from CLAUDE.md</li></ul><p class="q-w">Order beats specificity every time &mdash; which is exactly what makes a broad deny such a reliable backstop.</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Before Day 4</div>
+    <h2>A few things to do between now and then.</h2>
+    <p class="sub">Same habit as every day so far &mdash; keep the momentum, don't let it sit until the last minute.</p>
+    <div class='pps'>
+      <div class="pp"><div class="pp-h">Push your Day 3 work to GitHub</div><p>Same habit as Day 1 and Day 2 &mdash; commit what you built and keep pushing daily. This is what you submit at the end of Day 4.</p></div>
+      <div class="pp"><div class="pp-h">Keep the trust-gate habit going</div><p>Run <code>/self-verify</code> on real work before you call anything done &mdash; not for the first time back in class.</p></div>
+      <div class="pp"><div class="pp-h">Bring a real problem</div><p>The labs land differently against code you actually care about than against a generic sample.</p></div>
+      <div class="pp"><div class="pp-h">Try the GitHub Actions walkthrough if you skipped it</div><p>The self-walkthrough guide in Session Resources still works post-class &mdash; fork the repo, wire the secret, open a PR.</p></div>
+    </div>
+    <div class="callout">
+      <div class="callout-h">Keep the habit going: commit as you go.</div>
+      <p>What you push each day becomes the repo you submit at the end of Day 4 &mdash; three days of real progress beats one commit dumped at the end. Make sure Day 3's work is pushed before Day 4 starts.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">GitHub Actions</div>
+    <h2>Run the security review yourself.</h2>
+    <p class="sub">Around 7&ndash;8 people finished this live. If you didn't get to it, the guide still works post-class &mdash; same repo, same steps.</p>
+    <div class="pk"><div class="pk-q">Base setup</div><div class="pk-a"><p>1. Fork <a href="https://github.com/anshajk/claude-security" target="_blank" rel="noopener">anshajk/claude-security</a> to your own GitHub account.</p><p>2. Install the Claude GitHub App on your fork and grant it permission to comment on PRs.</p><p>3. Add your <code>ANTHROPIC_API_KEY</code> as an Actions secret in your fork's settings.</p><p>4. Enable GitHub Actions on the fork &mdash; it's off by default on a fork.</p><p>5. Create a change (the guide uses <code>demo_file.md</code>) and open a PR against <b>your own fork's</b> main branch, not the original repo &mdash; that's the one mistake the guide flags most.</p></div></div>
+    <div class="pk"><div class="pk-q">Triggering the OWASP-specific review</div><div class="pk-a"><p>No new setup &mdash; same fork, same app install, same secret, from the base steps above. The difference is <i>where</i> you put your change. The general Claude review comments on any PR, but the dedicated OWASP pass only fires when the change lands inside one of three watched paths (this is the <code>paths:</code> filter in the workflow file, wired to wake the job only on the vulnerable surface):</p><p><code>backend/src/**</code> &middot; <code>frontend/**</code> &middot; <code>contracts/openapi.yaml</code></p><p>Make a new file or edit an existing one inside one of those three paths, then open the PR the same way as before &mdash; against your own fork, not the original repo. That's the whole difference from the base setup.</p><p>Example from the session: <a href="https://github.com/aiexplorer37-creator/claude-security/pull/2" target="_blank" rel="noopener">a PR that just adds <code>backend/src/new.md</code></a> &mdash; trivial on its own, but landing inside <code>backend/src/**</code> is what's enough to wake the OWASP-pass job and get the automated findings posted as PR comments.</p></div></div>
+    <p class="sub">Full step-by-step guide (with screenshots): <a href="https://lvt-live-session.vercel.app/github-actions-security-review" target="_blank" rel="noopener">lvt-live-session.vercel.app/github-actions-security-review</a></p>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Session Resources</div>
+    <h2>Everything from Day 3, in one place.</h2>
+    <p class="sub">The slide deck and the code from the Day 3 live demos.</p>
+    <div class='mat'>
+      <div class="mt"><div><div class="mt-l">Day 3 Slides &amp; Materials</div><div class="mt-d">The full Day 3 presentation</div></div><a class="lnk" href="important-docs/LVT%20Day_3%20Live%20Class%20Slides.pdf" download="LVT Day_3 Live Class Slides.pdf">Download deck &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Session GitHub Repo</div><div class="mt-d">Code from the Day 3 live demos</div></div><a class="lnk" href="https://github.com/nsr-19/accelerXlvt-labs/tree/main/lvt-day2-code-demo" target="_blank" rel="noopener">View repo &rarr;</a></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Additional Resources</div>
+    <h2>Where this goes beyond today's labs.</h2>
+    <p class="sub">Official documentation on where automated security review is headed in Claude Code.</p>
+    <div class='mat'>
+      <div class="mt"><div><div class="mt-l">Automated Security Reviews in Claude Code</div><div class="mt-d">The <code>/security-review</code> command and the GitHub Actions integration, documented</div></div><a class="lnk" href="https://support.claude.com/en/articles/11932705-automated-security-reviews-in-claude-code" target="_blank" rel="noopener">Read the article &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Claude Security</div><div class="mt-d">Anthropic's Enterprise-beta code scanner &mdash; adversarial verification, patch suggestions, Slack &amp; Jira</div></div><a class="lnk" href="https://claude.com/product/claude-security" target="_blank" rel="noopener">View product &rarr;</a></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Optional Stretch Track</div>
+    <h2>Day 3 Advanced Assignments</h2>
+    <p class="sub">Optional &middot; Self-paced &middot; six milestones &middot; gated behind the four guided labs &middot; for learners already fluent with the Trust Gate</p>
+    <div class="assess">
+      <div class="assess-split">
+        <div>
+          <div class="assess-part-h"><span class="assess-pill">Is this for you?</span></div>
+          <p>Six expert-level exercises built around the same Command Center repo &mdash; author defective diffs and see which gates actually catch them, design a new single-purpose review hat with least-privilege scoping, write a black-box contract harness, triage and fix five planted OWASP findings with regression tests, break and fix permission rules, and build a reusable AST10 audit rubric.</p>
+        </div>
+        <div>
+          <div class="assess-part-h"><span class="assess-pill purple">Not sure?</span></div>
+          <p>You should attempt these only after you can comfortably do the guided Part 1&ndash;4 labs &mdash; that's an explicit prerequisite, not a suggestion. It's entirely optional and nothing in Day 4 depends on it.</p>
+        </div>
+      </div>
+      <div class="assess-topics assess-milestones">
+        <span>Engineering the Slop</span><span>Fourth Review Hat</span><span>Black Box Contract Harness</span><span>OWASP Remediation</span><span>Permissions Hardening</span><span>AST10 Adoption Audit</span>
+      </div>
+      <div class="assess-foot">
+        <span class="assess-note">&ldquo;Don't weaken gates to pass. Document evidence for all claims.&rdquo; &mdash; the house rules</span>
+        <a class="assess-btn" href="https://github.com/ANI-IN/day3-advanced-assignments" target="_blank" rel="noopener">View the assignments <i>&rarr;</i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">More From the Chat</div>
+    <h2>What came up in the chat.</h2>
+    <p class="sub">A mix of what learners and the Acceler team dropped in the Zoom chat during Day 3 &mdash; worth keeping around.</p>
+    <table><tr><td><a href="https://owasp.org/www-project-agentic-skills-top-10/checklist.html" target="_blank" rel="noopener">Agentic Skills Top 10 &mdash; checklist</a></td><td>OWASP's practical checklist for the AST01&ndash;AST10 risk categories covered in Part 3</td></tr><tr><td><a href="https://github.com/anshajk/claude-security/blob/main/.claude/agents/security-reviewer.md" target="_blank" rel="noopener">security-reviewer.md</a></td><td>The actual subagent definition used in the Part 3 demo &mdash; read exactly what it's scoped to do</td></tr><tr><td><a href="https://github.com/anshajk/claude-security/blob/main/.claude/skills/owasp-review/SKILL.md" target="_blank" rel="noopener">owasp-review SKILL.md</a></td><td>The vetted skill itself &mdash; the five-category method, in the exact instructions the agent follows</td></tr><tr><td><a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Claude Cowork</a></td><td>Anthropic's non-technical counterpart to Claude Code &mdash; came up when a learner without a coding background asked what to use instead</td></tr></table>
+  </div>
+
+</div>
+
+<div class="foot-bar">
+  <p>Questions before Day 4? The Slack group is the fastest route &mdash; ask there and everyone learns from the answer.</p>
+  <span>Day 3 Recap &mdash; AI-Assisted Development Program for LVT &middot; Shivam Patel &middot; Acceler</span>
+</div>
+
+</body></html>
