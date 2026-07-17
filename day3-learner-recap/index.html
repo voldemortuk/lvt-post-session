@@ -228,6 +228,42 @@ td:first-child{width:220px}
 .shot img{display:block;width:100%;height:auto}
 .shot-cap{font-size:13px;color:#64748b;background:#fff;padding:13px 20px;border-top:1px solid #eef1f7;line-height:1.55}
 .shot-cap b{color:#262533}
+html{scroll-behavior:smooth}
+.sec,.handoff{scroll-margin-top:24px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* inline contents index — compact chip row */
+.toc-card{background:#fff;border:1px solid #dce2ee;border-radius:14px;padding:20px 24px;margin-bottom:56px}
+.toc-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.toc-card-h{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f86b3c}
+.toc-hint{font-size:12px;color:#94a3b8}
+.toc-chips{display:flex;flex-wrap:wrap;gap:8px}
+.toc-chip{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13.5px;font-weight:500;color:#475569;background:#f7f9fc;border:1px solid #e3e9f2;border-radius:24px;padding:7px 15px;transition:background .14s,border-color .14s,color .14s}
+.toc-chip:hover{background:#fff1ee;border-color:#ffd9cc;color:#c2410c}
+.toc-chip .cn{font-family:'DM Serif Display',serif;font-size:12.5px;color:#f86b3c}
+/* floating contents launcher + jump panel */
+.nav-fab{position:fixed;right:22px;bottom:22px;z-index:60;display:inline-flex;align-items:center;gap:13px;background:#262533;color:#fff;border:none;border-radius:40px;padding:11px 17px 11px 19px;cursor:pointer;box-shadow:0 14px 34px -12px rgba(38,37,51,.55);font-family:inherit;transition:transform .15s,box-shadow .15s,opacity .18s,visibility .18s}
+.nav-fab:hover{transform:translateY(-2px);box-shadow:0 18px 42px -12px rgba(38,37,51,.62)}
+.nav-fab .fab-cur{display:flex;flex-direction:column;align-items:flex-start;line-height:1.18;text-align:left}
+.nav-fab .fab-k{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ff9470}
+.nav-fab .fab-t{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.nav-fab .fab-ic{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.nav-fab .fab-ic i{width:15px;height:2px;background:#94a3b8;border-radius:2px;display:block;transition:background .15s}
+.nav-fab:hover .fab-ic i{background:#fff}
+.nav-fab.gone{opacity:0;visibility:hidden;transform:translateY(8px)}
+.nav-back{position:fixed;inset:0;z-index:65;background:rgba(38,37,51,.34);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.nav-back.show{opacity:1;visibility:visible}
+.nav-panel{position:fixed;right:22px;bottom:22px;z-index:70;width:296px;max-width:calc(100vw - 44px);max-height:82vh;overflow:auto;background:#fff;border:1px solid #eef1f7;border-radius:16px;box-shadow:0 26px 64px -18px rgba(38,37,51,.5);padding:12px;transform:translateY(14px) scale(.97);transform-origin:bottom right;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s}
+.nav-panel.show{opacity:1;visibility:visible;transform:none}
+.nav-panel-h{display:flex;align-items:center;justify-content:space-between;padding:6px 8px 10px}
+.nav-panel-h span{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f86b3c}
+.nav-panel-close{border:none;background:#f7f9fc;color:#94a3b8;width:27px;height:27px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+.nav-panel-close:hover{background:#eef1f7;color:#262533}
+.nav-panel a{display:flex;align-items:center;gap:13px;text-decoration:none;color:#475569;font-size:14.5px;padding:9px 12px;border-radius:10px;transition:background .13s,color .13s}
+.nav-panel a:hover{background:#f7f9fc;color:#262533}
+.nav-panel a .pn{font-family:'DM Serif Display',serif;font-size:13px;color:#cbd5e1;width:20px;flex-shrink:0;transition:color .13s}
+.nav-panel a.active{background:#fff1ee;color:#c2410c;font-weight:600}
+.nav-panel a.active .pn{color:#f86b3c}
+@media print{.nav-fab,.nav-panel,.nav-back{display:none!important}}
 </style></head><body>
 
 <div class="rhead">
@@ -262,7 +298,28 @@ td:first-child{width:220px}
     <p class="handoff-p">We read every piece of feedback from today&rsquo;s session &mdash; and you were clear. Shivam stays on as your instructor through Day&nbsp;4. Same person, same format, straight to the finish.</p>
   </div>
 
-  <div class="sec">
+  <nav class="toc-card" aria-label="Contents">
+    <div class="toc-top">
+      <div class="toc-card-h">In this recap</div>
+      <div class="toc-hint">Tap to jump &middot; 12 sections</div>
+    </div>
+    <div class="toc-chips">
+      <a class="toc-chip" href="#instructor"><span class="cn">01</span> Your Instructor</a>
+      <a class="toc-chip" href="#covered"><span class="cn">02</span> What We Covered</a>
+      <a class="toc-chip" href="#takeaways"><span class="cn">03</span> Key Takeaways</a>
+      <a class="toc-chip" href="#cheatsheet"><span class="cn">04</span> Cheat Sheet</a>
+      <a class="toc-chip" href="#questions"><span class="cn">05</span> Questions We Parked</a>
+      <a class="toc-chip" href="#quiz"><span class="cn">06</span> Quiz Solutions</a>
+      <a class="toc-chip" href="#before"><span class="cn">07</span> Before Day 4</a>
+      <a class="toc-chip" href="#handson"><span class="cn">08</span> Hands-On Lab</a>
+      <a class="toc-chip" href="#resources"><span class="cn">09</span> Session Resources</a>
+      <a class="toc-chip" href="#additional"><span class="cn">10</span> Additional Resources</a>
+      <a class="toc-chip" href="#stretch"><span class="cn">11</span> Stretch Track</a>
+      <a class="toc-chip" href="#chat"><span class="cn">12</span> From the Chat</a>
+    </div>
+  </nav>
+
+  <div class="sec" id="instructor">
     <div class="eyebrow">Your Instructor</div>
     <h2>The engineer running your sessions.</h2>
     <div class="meet">
@@ -302,7 +359,7 @@ td:first-child{width:220px}
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="covered">
     <div class="eyebrow">What We Covered</div>
     <h2>Five parts, one gate.</h2>
     <p class="sub">Day 2 was about directing the tool with discipline. Day 3 was about not trusting it &mdash; building the gates a team can actually stand behind before AI-written code ships: catching your own mistakes first, getting judgments that aren't the author's, wiring those reviews into GitHub itself, hunting real vulnerabilities instead of trusting a tool's word for it, and setting permissions that hold without slowing you down.</p>
@@ -371,32 +428,32 @@ td:first-child{width:220px}
   </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="takeaways">
     <div class="eyebrow">Key Takeaways</div>
     <h2>If you remember six things.</h2>
     <div class='tks'><div class="tk"><div class="tk-h">Tidiness disarms the reviewer</div><p>An AI draft that looks idiomatic is the most dangerous kind of code &mdash; you read the shape, nod, and move on. The shape is what the model gets right; the logic is what it gets wrong.</p></div><div class="tk"><div class="tk-h">Independent hats beat one blended pass</div><p>A single reviewer asked for everything at once tends to miss the IDOR. The value of the panel isn't any one hat &mdash; it's the deltas between them.</p></div><div class="tk"><div class="tk-h">Only the deterministic lane can block a merge</div><p>GitHub Actions runs Claude's review automatically on every PR, but severity never fails a build by design. Want a finding to block? Write it as an assertion in the test suite, not a comment.</p></div><div class="tk"><div class="tk-h">A tool flag is a claim, not a proof</div><p>Every OWASP pass produces caught, false-positive, and caught-but-unproven buckets. Triage turns a flag into a written verdict &mdash; a dismissal with no reason is indistinguishable from a bug ignored.</p></div><div class="tk"><div class="tk-h">Deny, then ask, then allow &mdash; first match wins</div><p>Specificity doesn't reorder the check. A broad deny always beats a narrow allow, and every level's deny rules merge together regardless of where they're set.</p></div><div class="tk"><div class="tk-h">No single gate is enough</div><p>A permission rule stops the obvious path; a hook catches what slips past an allow rule; a sandbox survives a script the agent writes itself. Defense in depth means layering all three.</p></div></div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="cheatsheet">
     <div class="eyebrow">Cheat Sheet</div>
     <h2>Commands, gates, and the repo map.</h2>
     <table><tr><td><code>/self-verify</code></td><td>Gates (lint/type-check &rarr; tests &rarr; build) &rarr; structured self-critique &rarr; present the diff</td></tr><tr><td><code>/hat-security</code> &middot; <code>/hat-design</code> &middot; <code>/hat-blackbox &lt;url&gt;</code></td><td>Three independent review lenses &mdash; run in separate sessions, no cross-talk</td></tr><tr><td><code>/triage &lt;finding&gt;</code></td><td>Locate &rarr; trace input to sink &rarr; verdict (real / false-positive) &rarr; record in writing</td></tr><tr><td><code>/permissions</code></td><td>See every active allow / ask / deny rule</td></tr><tr><td><code>claude doctor</code></td><td>Check that <code>settings.json</code> is valid</td></tr><tr><td>deny &rarr; ask &rarr; allow</td><td>Rule check order &mdash; first match wins, not the most specific rule</td></tr><tr><td><code>make setup</code> / <code>make test</code></td><td>One-time pnpm install (backend + frontend) / vitest, green on the baseline</td></tr><tr><td><code>make dev-api</code> / <code>make dev-web</code></td><td>Fastify Command Center &rarr; :8000 (<code>/health</code>) / Vite dashboard &rarr; :5173</td></tr><tr><td><code>make slop</code> / <code>make reset</code></td><td>Apply planted defects to <code>slop/part-1</code> / back to the clean baseline</td></tr></table>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="questions">
     <div class="eyebrow">Questions We Parked or Rushed</div>
     <h2>The answers we owed you.</h2>
     <p class="sub">Some of these got a hurried answer on the day and some got none at all. Here they are properly.</p>
     <div class="qa"><div class="qa-rail"><div class="qa-badge">Q1</div></div><div class="qa-body"><div class="qa-q">I got behind and missed how the agent was kicked off so that the OWASP agent ran &mdash; can you share how the security-reviewer agent was actually run?</div><div class="qa-a"><span class="lead">A</span>This never got picked up live, so here's the clean version. The demo used two distinct mechanisms, and the repo's own map labels the difference: the <code>owasp-review</code> <b>skill</b> is marked <code>(auto)</code> &mdash; it's project-scoped at <code>.claude/skills/owasp-review/</code>, and Claude Code loads it automatically into context whenever a task's description matches what the skill covers, so simply asking for a security pass over <code>backend/src/api/</code> is enough to trigger it. The <code>security-reviewer</code> <b>subagent</b> (<code>.claude/agents/security-reviewer.md</code>) is a separate mechanism: a distinct reasoning session with its own scoped tools (<code>Read, Grep, Glob, Bash(git diff:*)</code>) that runs an independent second pass. Subagents like this are typically invoked either by Claude routing to them automatically when a task matches their stated purpose, or by asking for them by name &mdash; "run the security-reviewer subagent on this diff." The point of running both in the demo was that they're independent checks, not one asking the other to confirm.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q2</div></div><div class="qa-body"><div class="qa-q">Claude often proposes commands using <code>&amp;&amp;</code> or <code>|</code>. Will Claude Code catch the follow-up commands in a chain like <code>ls &amp;&amp; rm -rf .</code> separately, or does approving the first part clear the whole line?</div><div class="qa-a"><span class="lead">A</span>This came in right at the end of the session and didn't get answered live &mdash; and it's really the same fragility Part 4 already covered for <code>curl example.com</code>, just applied to a different operator. Claude Code's documented behavior is that each subcommand in a chain (split on <code>&amp;&amp;</code>, <code>;</code>, or <code>|</code>) is meant to be evaluated on its own &mdash; approving <code>git status &amp;&amp; npm test</code> is supposed to save a rule for <code>npm test</code> alone, not for the whole compound string. In practice, this has been an active area of hardening: several reports against Claude Code describe cases where a chained command wasn't fully re-evaluated segment by segment. The safe takeaway matches what Part 4 already taught: don't lean on a narrow allow/ask rule to catch a compound command reliably &mdash; deny broadly, and allow only the exact single command you've verified is safe.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q3</div></div><div class="qa-body"><div class="qa-q">Managed settings get &ldquo;pushed by IT.&rdquo; Where does that actually go &mdash; what file, what mechanism?</div><div class="qa-a"><span class="lead">A</span>The precedence got covered live (Managed beats Local beats Project beats User), but not the actual delivery mechanism, so here it is. Managed settings are OS-specific files: macOS at <code>/Library/Application Support/ClaudeCode/managed-settings.json</code>, Linux/WSL at <code>/etc/claude-code/managed-settings.json</code>, and Windows at <code>C:\Program Files\ClaudeCode\managed-settings.json</code>. IT typically deploys that file through the tooling they already use for fleet policy &mdash; an MDM profile on macOS (Jamf, Kandji), Group Policy or Intune on Windows &mdash; rather than a person editing it by hand on every machine. There's also a server-managed option that pushes configuration from the Claude.ai admin console directly, with no file on disk at all.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q4</div></div><div class="qa-body"><div class="qa-q">Are permissions reflected in the model's context, so it doesn't waste time trying something it isn't allowed to do?</div><div class="qa-a"><span class="lead">A</span>This got a quick "no" live, plus a mention that the model gets "fine-tuned" once it hits a rejection &mdash; worth expanding on, since that phrase can land two different ways. Permission rules aren't injected into the system prompt or shown to the model up front. The agent finds out a rule exists only by attempting the action and getting a rejection back as a tool result &mdash; the same trial-and-error either way, every time. What's happening after that is in-context behavior within that same session: Claude reads the rejection like any other tool result and generally won't retry the identical blocked action again in that conversation. That's the agent reacting to feedback already sitting in its own transcript, not the underlying model being retrained on your individual denials.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q5</div></div><div class="qa-body"><div class="qa-q">Is there a suggested process for reviewing skills, plugins, and MCPs before letting engineers use them &mdash; and do Cursor or Claude Code enforce anything like AST10 before a skill reaches their marketplace?</div><div class="qa-a"><span class="lead">A</span>This one got acknowledged live rather than answered in full &mdash; it's already being discussed with sec ops, and a company-wide vetting process is its own decision, separate from what one training session can settle. What today's material does give you is the closest thing to a starting method: the lethal-trifecta test from Part 3 (does the skill read private data, see untrusted content, and reach the network &mdash; all three at once?), plus the AST10 checklist's own guidance to prefer reputable sources, read a skill before installing it, pin versions, and treat adoption as its own security review. Neither Cursor nor Claude Code's marketplaces are described in today's materials as enforcing AST10 automatically &mdash; part of why this bootcamp ships its own vetted, self-contained <code>owasp-review</code> skill instead of pulling one from a marketplace. A formal, LVT-wide review process for engineers browsing marketplaces is still coming, separately from today.</div></div></div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="quiz">
     <div class="eyebrow">Quiz Solutions</div>
     <h2>The seven checkpoint questions, answered.</h2>
     <div class="q"><div class="q-n">Q1</div><div class="q-b"><p class="q-t">Why is an AI first draft that looks idiomatic the most dangerous kind of code?</p><ul class="q-o"><li class="">It is written faster than a human would write it</li><li class="">Idiomatic code cannot be unit-tested</li><li class="ok">Tidiness disarms the reviewer &mdash; you read the shape, nod, and move on <span class=tick>&#10003;</span></li><li class="">The compiler skips its checks on idiomatic code</li></ul><p class="q-w">The shape is what the model gets right; the logic is what it gets wrong &mdash; and a clean shape talks the reviewer out of looking closely.</p></div></div><div class="q"><div class="q-n">Q2</div><div class="q-b"><p class="q-t">In <code>/self-verify</code>, what do you do with a green test that asserts nothing?</p><ul class="q-o"><li class="ok">Treat it as red &mdash; strengthen the assertion and re-run <span class=tick>&#10003;</span></li><li class="">Accept it; a passing test is a passing test</li><li class="">Delete it so the suite stays green</li><li class="">Leave it for the security hat to handle</li></ul><p class="q-w">A vacuous test green-lights whatever bugs it should have caught. It only counts once it can actually fail.</p></div></div><div class="q"><div class="q-n">Q3</div><div class="q-b"><p class="q-t">Why run three separate single-hat reviewers instead of one wearing all four hats?</p><ul class="q-o"><li class="">Running them in parallel is faster</li><li class="">Each hat needs a different LLM</li><li class="">A single hat can only check formatting</li><li class="ok">One agent blends the conflicts away; independent hats go deep and can disagree <span class=tick>&#10003;</span></li></ul><p class="q-w">The value isn't any one hat's output &mdash; it's the deltas between them, and the tradeoffs they surface by disagreeing.</p></div></div><div class="q"><div class="q-n">Q4</div><div class="q-b"><p class="q-t">What lets the black-box hat catch an IDOR the all-in-one reviewer misses?</p><ul class="q-o"><li class="">It reviews the implementation line-by-line</li><li class="ok">It sees only the contract, not the code &mdash; so tidy code can't talk it out of the bug <span class=tick>&#10003;</span></li><li class="">It runs with elevated database privileges</li><li class="">It rewrites weak tests until they pass</li></ul><p class="q-w">Reading only <code>contracts/openapi.yaml</code> means it can't anchor to the code's intent or excuse the gap the way a reviewer reading clean code might.</p></div></div><div class="q"><div class="q-n">Q5</div><div class="q-b"><p class="q-t">What does &ldquo;authenticated &ne; authorized&rdquo; mean?</p><ul class="q-o"><li class="">You must authenticate twice for risky actions</li><li class="">Authorization always happens before authentication</li><li class="ok">Logging in proves who you are, not that you may see this row <span class=tick>&#10003;</span></li><li class="">Only administrators are ever authorized</li></ul><p class="q-w">A valid session proves identity. It says nothing about whether that identity is allowed to see this particular record.</p></div></div><div class="q"><div class="q-n">Q6</div><div class="q-b"><p class="q-t">A skill hits the &ldquo;lethal trifecta&rdquo; when it can do all three of what?</p><ul class="q-o"><li class="ok">Read private data, see untrusted content, and reach the outside <span class=tick>&#10003;</span></li><li class="">Read code, write code, and run tests</li><li class="">Install plugins, auto-update, and log errors</li><li class="">Use the network, the disk, and the GPU</li></ul><p class="q-w">All three together is what makes a skill dangerous &mdash; any one or two alone is a much smaller risk.</p></div></div><div class="q"><div class="q-n">Q7</div><div class="q-b"><p class="q-t">In what order does Claude Code check permission rules, and which wins?</p><ul class="q-o"><li class="">allow &rarr; ask &rarr; deny; the most specific rule wins</li><li class="ok">deny &rarr; ask &rarr; allow; the first match wins &mdash; a broad deny beats a narrow allow <span class=tick>&#10003;</span></li><li class="">ask &rarr; allow &rarr; deny; the last match wins</li><li class="">There is no order; the AI decides from CLAUDE.md</li></ul><p class="q-w">Order beats specificity every time &mdash; which is exactly what makes a broad deny such a reliable backstop.</p></div></div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="before">
     <div class="eyebrow">Before Day 4</div>
     <h2>A few things to do between now and then.</h2>
     <p class="sub">Same habit as every day so far &mdash; keep the momentum, don't let it sit until the last minute.</p>
@@ -412,7 +469,7 @@ td:first-child{width:220px}
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="handson">
     <div class="eyebrow">Hands-On &middot; GitHub Actions</div>
     <h2>Run the security review yourself.</h2>
     <p class="sub">The lab from Part&nbsp;2.1, end to end: fork a repo, add one secret, open a PR &mdash; then watch Claude&rsquo;s OWASP review post its findings straight into the pull request. The full walkthrough, with screenshots, is embedded right here.</p>
@@ -488,12 +545,12 @@ td:first-child{width:220px}
     <p class="ghnote">Make or edit a file inside one of those three paths, then open the PR the same way as before &mdash; against your own fork, not the original repo. That&rsquo;s the whole difference from the base setup.</p>
     <p class="ghnote"><b>Example from the session:</b> <a href="https://github.com/aiexplorer37-creator/claude-security/pull/2" target="_blank" rel="noopener">a PR that just adds</a> <code>backend/src/new.md</code> &mdash; trivial on its own, but landing inside <code>backend/src/**</code> is enough to wake the OWASP-pass job and get the automated findings posted as PR comments.</p>
     <div class="shot">
-      <img src="lvt-post-session/day3-learner-recap/assets/owasp-review-pr.png" alt="Claude's OWASP Review comment on the example PR — flagging SQL injection, SSRF and IDOR, each with severity, what, exploit, fix and confidence" loading="lazy">
+      <img src="assets/owasp-review-pr.png" alt="Claude's OWASP Review comment on the example PR — flagging SQL injection, SSRF and IDOR, each with severity, what, exploit, fix and confidence" loading="lazy">
       <div class="shot-cap"><b>What actually lands on the PR:</b> Claude&rsquo;s OWASP review posts each finding with severity, what, exploit, fix, and confidence &mdash; here, SQL injection, SSRF, and an IDOR caught on the example diff above.</div>
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="resources">
     <div class="eyebrow">Session Resources</div>
     <h2>Everything from Day 3, in one place.</h2>
     <p class="sub">The slide deck and the code from the Day 3 live demos.</p>
@@ -503,7 +560,7 @@ td:first-child{width:220px}
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="additional">
     <div class="eyebrow">Additional Resources</div>
     <h2>Where this goes beyond today's labs.</h2>
     <p class="sub">Official documentation on where automated security review is headed in Claude Code.</p>
@@ -513,7 +570,7 @@ td:first-child{width:220px}
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="stretch">
     <div class="eyebrow">Optional Stretch Track</div>
     <h2>Day 3 Advanced Assignments</h2>
     <p class="sub">Optional &middot; Self-paced &middot; six milestones &middot; gated behind the four guided labs &middot; for learners already fluent with the Trust Gate</p>
@@ -538,7 +595,7 @@ td:first-child{width:220px}
     </div>
   </div>
 
-  <div class="sec">
+  <div class="sec" id="chat">
     <div class="eyebrow">More From the Chat</div>
     <h2>What came up in the chat.</h2>
     <p class="sub">A mix of what learners and the Acceler team dropped in the Zoom chat during Day 3 &mdash; worth keeping around.</p>
@@ -551,5 +608,57 @@ td:first-child{width:220px}
   <p>Questions before Day 4? The Slack group is the fastest route &mdash; ask there and everyone learns from the answer.</p>
   <span>Day 3 Recap &mdash; AI-Assisted Development Program for LVT &middot; Shivam Patel &middot; Acceler</span>
 </div>
+
+<button class="nav-fab" id="navFab" aria-haspopup="true" aria-expanded="false" aria-controls="navPanel">
+  <span class="fab-cur"><span class="fab-k">In this recap</span><span class="fab-t" id="fabCur">Your Instructor</span></span>
+  <span class="fab-ic" aria-hidden="true"><i></i><i></i><i></i></span>
+</button>
+<div class="nav-back" id="navBack"></div>
+<nav class="nav-panel" id="navPanel" aria-label="Section navigation" role="menu">
+  <div class="nav-panel-h"><span>Jump to a section</span><button class="nav-panel-close" id="navClose" aria-label="Close contents">&times;</button></div>
+  <a href="#instructor"><span class="pn">01</span> Your Instructor</a>
+  <a href="#covered"><span class="pn">02</span> What We Covered</a>
+  <a href="#takeaways"><span class="pn">03</span> Key Takeaways</a>
+  <a href="#cheatsheet"><span class="pn">04</span> Cheat Sheet</a>
+  <a href="#questions"><span class="pn">05</span> Questions We Parked</a>
+  <a href="#quiz"><span class="pn">06</span> Quiz Solutions</a>
+  <a href="#before"><span class="pn">07</span> Before Day 4</a>
+  <a href="#handson"><span class="pn">08</span> Hands-On Lab</a>
+  <a href="#resources"><span class="pn">09</span> Session Resources</a>
+  <a href="#additional"><span class="pn">10</span> Additional Resources</a>
+  <a href="#stretch"><span class="pn">11</span> Stretch Track</a>
+  <a href="#chat"><span class="pn">12</span> From the Chat</a>
+</nav>
+
+<script>
+(function(){
+  var fab=document.getElementById('navFab'),panel=document.getElementById('navPanel'),
+      back=document.getElementById('navBack'),closeBtn=document.getElementById('navClose'),
+      fabCur=document.getElementById('fabCur');
+  if(!fab||!panel)return;
+  var links=[].slice.call(panel.querySelectorAll('a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  function open(){panel.classList.add('show');back.classList.add('show');fab.classList.add('gone');fab.setAttribute('aria-expanded','true');}
+  function close(){panel.classList.remove('show');back.classList.remove('show');fab.classList.remove('gone');fab.setAttribute('aria-expanded','false');}
+  fab.addEventListener('click',open);
+  back.addEventListener('click',close);
+  closeBtn.addEventListener('click',close);
+  links.forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var y=window.scrollY+130,cur=secs.length?secs[0]:null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s;});
+    if(!cur)return;
+    links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href').slice(1)===cur.id);});
+    var active=links.filter(function(a){return a.getAttribute('href').slice(1)===cur.id;})[0];
+    if(active)fabCur.textContent=active.textContent.replace(/^\s*\d+\s*/,'').trim();
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
+</script>
 
 </body></html>
