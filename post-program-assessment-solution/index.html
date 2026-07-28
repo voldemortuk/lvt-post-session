@@ -35,6 +35,17 @@ h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;c
 .pk-think{list-style:none;margin-top:6px}
 .pk-think li{position:relative;padding-left:18px;margin-bottom:8px;font-size:14.5px;line-height:1.6;color:#475569}
 .pk-think li:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#cbd5e1}
+.pk-ans{border-top:1px dashed #dce2ee;margin-top:18px;padding-top:16px}
+.pk-ans-lead{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.pk-ans-badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#f86b3c;border-radius:20px;padding:3px 11px}
+.pk-ans-note{font-size:12px;color:#94a3b8}
+.pk-ans-pt{margin-bottom:12px}
+.pk-ans-pt:last-of-type{margin-bottom:14px}
+.pk-ans-h{font-size:14px;font-weight:700;color:#262533;margin-bottom:4px}
+.pk-ans p{font-size:14.5px;line-height:1.68;color:#475569;margin-bottom:0}
+.pk-ans b{color:#262533}
+.pk-ans-sum{background:#262533;color:#e2e8f0;border-radius:10px;padding:14px 18px;font-size:14px;line-height:1.62;margin-top:4px}
+.pk-ans-sum b{color:#ff9470}
 @media(max-width:860px){.wrap{padding-left:24px;padding-right:24px}}
 .rhead{background:#262533;padding:34px 40px 30px}
 .rhead-in{max-width:1060px;margin:0 auto}
@@ -113,6 +124,15 @@ h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;c
         <li>Why a reviewer who did not write the code catches what the author cannot.</li>
         <li>Which checks belong to a machine, and which need your judgment.</li>
       </ul>
+      <div class="pk-ans">
+        <div class="pk-ans-lead"><span class="pk-ans-badge">Model Answer</span><span class="pk-ans-note">One way to answer it. Any response that covers these five points earns full marks.</span></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">1. Idiomatic code is the dangerous kind.</div><p>Clean formatting and house style are exactly what the model reproduces best, so a tidy diff talks the reviewer out of reading closely. The shape is what an agent reliably gets right. The logic underneath it is what it gets wrong. A twelve-line handler can hide an inverted comparison, a copy-paste field never adapted, or an off-by-one, all cleared by one test that never checks the return value. Thirty minutes spent admiring the style is thirty minutes not spent finding that.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">2. Before the diff ever reached you, it should have cleared the deterministic gates.</div><p>Lint, type-check, tests, and a secret scan run first and block the merge on their own. That's what "the whole suite is green" is supposed to mean. On top of that, a structured self-critique should already have reread the diff for logic, copy-paste drift, error handling, weak tests, and scope creep. If neither of those ran, a green suite alone proves nothing yet.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">3. A passing test that asserts nothing is red.</div><p>It passes no matter what the function returns, so treat it exactly like a failing test. Strengthen the assertion and run it again before counting the suite as green at all.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">4. Independence catches what the author's own context can't.</div><p>A reviewer sharing the author's context tends to inherit its blind spots. Separate, adversarial passes that don't cross-talk go deep instead of blending into one generic pass, and they're allowed to disagree with each other. A reviewer scoped only to the contract, never the implementation, is the sharpest version of this. It can't be reassured by clean code or anchor to the author's intent, so it makes the one request the contract promised was blocked, catching an IDOR that tidy code would have talked a normal reviewer out of finding.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">5. The machine proves; your judgment decides.</div><p>Deterministic checks (lint, build, tests, secret scan) block the merge and need no judgment call. What only advises, a review comment, a severity label, never fails a build by design: a comment is a claim, and a failing test is proof. Spend the thirty minutes where a machine can't stand in for you. Read the self-critique and any independent review findings, and confirm at least one human-authored assertion exists on anything that matters, since AI-written tests can miss what an AI wouldn't think to test.</p></div>
+        <div class="pk-ans-sum"><p><b>The one-line version.</b> Clean code and a green suite are the floor. Ship only once both a deterministic gate and a genuinely independent judgment pass have actually happened.</p></div>
+      </div>
     </div>
 
     <div class="pk" data-cmt="Subjective 2">
@@ -127,6 +147,15 @@ h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;c
         <li>How to stop two agents from editing the same file, and how many to run at once.</li>
         <li>One practice that makes each run smarter than the last.</li>
       </ul>
+      <div class="pk-ans">
+        <div class="pk-ans-lead"><span class="pk-ans-badge">Model Answer</span><span class="pk-ans-note">One way to answer it. Any response that covers these five points earns full marks.</span></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">1. This is a harness problem.</div><p>Agent equals model plus harness: prompts, tools, infrastructure, and control logic, treated as a real system. The same model, run by different engineers with different context, tools, and control logic around it, produces different results. Most production agent failures trace back to the harness: context rot, tool overload, brittle wiring, missing guardrails. The model's own capability is rarely the actual constraint.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">2. Context is billed whether it's used or not.</div><p>Dumping a whole repo into every prompt multiplies the bill on every retry, whether that context ever gets used. Two things fix it directly: a tight payload (<code>CLAUDE.md</code> plus only the files a task actually touches, not the whole repo) and dynamic context (skills and MCP servers pulled in on demand instead of carried in full on every turn).</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">3. Route the model to the work, not every task to the same model.</div><p>Heavy, frontier models earn their cost on requirements, architecture, and first implementation, the work where reasoning quality actually matters. Small, fast, cheap models match that quality on tests, review, and CI monitoring. Sending everything to the same large model is what produces the inflated bill and the inconsistent quality at the same time: routine work pays frontier prices, and nobody has actually decided which tasks need that much reasoning.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">4. One file, one owner, and a concurrency limit.</div><p>Two agents undoing each other's work is a missing ownership rule. Never let two agents edit the same file in the same run. Git worktrees give each parallel agent its own isolated checkout, so there's no shared file to collide over. Cap concurrency at three to five agents as a working set, with a kill criterion: stuck three or more iterations on the same error means stop and reassign, not keep retrying.</p></div>
+        <div class="pk-ans-pt"><div class="pk-ans-h">5. Update <code>AGENTS.md</code> every run.</div><p>This is the retro step in the Factory Model. Each fix or convention a team hits becomes a rule the next run starts with, so quality compounds instead of every engineer rediscovering the same mistake at the same token cost.</p></div>
+        <div class="pk-ans-sum"><p><b>The one-line version.</b> Cost and reliability move together because they share the same fixes. A tight, dynamic context and correct model routing cut the bill and remove the confusion an overloaded window causes. File ownership and a written <code>AGENTS.md</code> remove the collisions and the repeated mistakes. Both problems were coming from the same underspecified harness, so fixing it improves both at once.</p></div>
+      </div>
     </div>
   </div>
 
