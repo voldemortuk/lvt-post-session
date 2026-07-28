@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 4 Recap — AI-Assisted Development Program — LVT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f9fc;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:#eef1f7;border:1px solid #dce2ee;border-radius:4px;padding:1px 5px;color:#262533;white-space:nowrap}
+a{color:#f86b3c}
+.wrap{max-width:1060px;margin:0 auto;padding:76px 40px 90px}
+.sec{margin-bottom:76px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f86b3c;margin-bottom:10px}
+h2{font-family:'DM Serif Display',Georgia,serif;font-size:36px;line-height:1.2;color:#262533;margin-bottom:12px}
+.sub{font-size:16px;color:#475569;line-height:1.6;max-width:760px;margin-bottom:34px}
+.part{display:flex;gap:26px;background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:28px 30px;margin-bottom:16px}
+.part-n{font-family:'DM Serif Display',serif;font-size:30px;color:#f86b3c;line-height:1;flex-shrink:0;width:44px}
+.part-b h3{font-size:20px;color:#262533;margin-bottom:3px}
+.part-s{font-size:13px;color:#94a3b8;font-weight:600;margin-bottom:14px}
+.part-b ul{list-style:none}
+.part-b li{position:relative;padding-left:18px;margin-bottom:9px;font-size:15px;line-height:1.62;color:#475569}
+.part-b li:before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#cbd5e1}
+.part-b li b{color:#262533}
+.tks{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tk{background:#fff;border:1px solid #dce2ee;border-left:3px solid #f86b3c;border-radius:8px;padding:20px 22px}
+.tk-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:7px}
+.tk p{font-size:14.5px;line-height:1.6;color:#475569}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dce2ee;border-radius:10px;overflow:hidden}
+td{padding:13px 20px;border-bottom:1px solid #eef1f7;font-size:15px;color:#475569}
+tr:last-child td{border-bottom:none}
+td:first-child{width:260px}
+.pk{background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:26px 30px;margin-bottom:14px}
+.pk-q{font-family:'DM Serif Display',Georgia,serif;font-size:21px;color:#262533;margin-bottom:12px;line-height:1.35}
+.pk-a{font-size:15px;line-height:1.68;color:#475569}
+.pk-a p{margin-bottom:10px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 4px}
+.ab-col{background:#f7f9fc;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.ab-h{font-weight:700;font-size:15px;color:#262533;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid #f86b3c;display:inline-block}
+.ab-col p{font-size:14.5px;line-height:1.62;color:#475569;margin-bottom:10px}
+.mat{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mt{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.mt-l{font-weight:600;font-size:15px;color:#262533}
+.mt-d{font-size:13px;color:#94a3b8;margin-top:2px}
+.lnk{font-size:13px;font-weight:600;color:#f86b3c;text-decoration:none;border:1px solid #f86b3c;border-radius:20px;padding:6px 14px;white-space:nowrap}
+.pps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pp{background:#fff;border:1px solid #dce2ee;border-radius:10px;padding:20px 22px}
+.pp-h{font-weight:700;font-size:15.5px;color:#262533;margin-bottom:6px}
+.pp p{font-size:14.5px;line-height:1.6;color:#475569}
+.callout{background:#262533;border-radius:12px;padding:26px 30px;margin-top:16px}
+.callout-h{font-family:'DM Serif Display',Georgia,serif;font-size:22px;color:#fff;margin-bottom:12px}
+.callout p{font-size:15px;line-height:1.68;color:rgba(244,246,251,.72);margin-bottom:10px}
+.callout p:last-child{margin-bottom:0}
+.callout b{color:#ff9470}
+.diag{background:#fff;border:1px solid #dce2ee;border-radius:12px;padding:22px;margin:18px 0}
+.diag img{width:100%;height:auto;display:block;border-radius:8px}
+.diag-cap{font-size:13px;color:#94a3b8;line-height:1.5;margin-top:12px;font-style:italic;text-align:center}
+@media(max-width:860px){.tks,.ab,.mat,.pps{grid-template-columns:1fr}.wrap{padding-left:24px;padding-right:24px}}
+.rhead{background:#262533;padding:34px 40px 30px}
+.rhead-in{max-width:1060px;margin:0 auto}
+.rhead .lock{background:#fff;border-radius:10px;padding:12px 22px;display:inline-flex;align-items:center;gap:18px;align-self:flex-start;margin-bottom:26px}
+.rhead .lock img.acc{height:26px} .rhead .lock .div{width:1px;height:30px;background:#dce2ee} .rhead .lock img.cli{height:26px}
+.rhead-h1{font-family:'DM Serif Display',Georgia,serif;font-size:40px;line-height:1.18;font-weight:400;color:#fff;margin-bottom:24px}
+.rhead-f{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.pill{display:inline-block;border:1px solid rgba(244,246,251,.28);border-radius:30px;padding:8px 18px;font-size:12px;font-weight:600;letter-spacing:.1em;color:rgba(244,246,251,.75);text-transform:uppercase}
+.cover-meta{display:flex;gap:22px;flex-wrap:wrap}
+.cover-meta span{font-size:12.5px;color:rgba(244,246,251,.55);display:inline-flex;align-items:center;gap:8px}
+.cover-meta i{width:7px;height:7px;border-radius:50%;background:#f86b3c;display:inline-block}
+@media(max-width:700px){.rhead{padding:28px 22px}.rhead-h1{font-size:30px}}
+.foot-bar{background:#262533;padding:28px 40px;text-align:center}
+.foot-bar p{font-size:13.5px;color:rgba(244,246,251,.55);line-height:1.6;max-width:640px;margin:0 auto 10px}
+.foot-bar span{font-size:11.5px;color:rgba(244,246,251,.3)}
+</style></head><body>
+
+<div class="rhead">
+  <div class="rhead-in">
+    <div class="lock"><img class="acc" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMTE2IDQ2NiIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTE5OTYuMSAxODYuMjA0QzIwMTcuMTMgMTQ3Ljg1IDIwNTcuOTYgMTI4LjA1NSAyMTE1LjQ5IDEyOC4wNTVWMTg1LjU4NUMyMTEwLjU0IDE4NC45NjcgMjEwNi4yMSAxODQuOTY3IDIxMDEuODggMTg0Ljk2N0MyMDM4LjE3IDE4NC45NjcgMTk5OC41NyAyMjMuOTM5IDE5OTguNTcgMjk1LjY5OFY0NTkuMDExSDE5MzkuMTlWMTMxLjE0OEgxOTk2LjFWMTg2LjIwNFoiIGZpbGw9IiMwNjJGN0UiLz4KICA8cGF0aCBkPSJNMTg3NS4yOCAyOTYuOTM1QzE4NzUuMjggMzAxLjg4NCAxODc0LjY2IDMwOS4zMDcgMTg3NC4wNSAzMTQuODc1SDE2MDguMDRDMTYxNS40NyAzNzIuNDA2IDE2NjEuODYgNDEwLjc1OSAxNzI2LjgyIDQxMC43NTlDMTc2NS4xNyA0MTAuNzU5IDE3OTcuMzQgMzk3Ljc2OSAxODIxLjQ2IDM3MS4xNjhMMTg1NC4yNSA0MDkuNTIyQzE4MjQuNTYgNDQ0LjE2NCAxNzc5LjQgNDYyLjcyMyAxNzI0Ljk2IDQ2Mi43MjNDMTYxOS4xOCA0NjIuNzIzIDE1NDguNjYgMzkyLjgyIDE1NDguNjYgMjk1LjA3OUMxNTQ4LjY2IDE5Ny45NTggMTYxOC41NiAxMjguMDU1IDE3MTMuMjEgMTI4LjA1NUMxODA3Ljg1IDEyOC4wNTUgMTg3NS4yOCAxOTYuMTAyIDE4NzUuMjggMjk2LjkzNVpNMTcxMy4yMSAxNzguMTYyQzE2NTYuMjkgMTc4LjE2MiAxNjE0LjIzIDIxNi41MTYgMTYwOC4wNCAyNzIuMTkxSDE4MTguMzdDMTgxMi4xOCAyMTcuMTM1IDE3NzAuNzQgMTc4LjE2MiAxNzEzLjIxIDE3OC4xNjJaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE0MjQuNzUgNDU5LjAwOVYwSDE0ODQuMTRWNDU5LjAwOUgxNDI0Ljc1WiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0xMzYwLjg0IDI5Ni45MzVDMTM2MC44NCAzMDEuODg0IDEzNjAuMjMgMzA5LjMwNyAxMzU5LjYxIDMxNC44NzVIMTA5My42MUMxMTAxLjAzIDM3Mi40MDYgMTE0Ny40MiA0MTAuNzU5IDEyMTIuMzggNDEwLjc1OUMxMjUwLjczIDQxMC43NTkgMTI4Mi45IDM5Ny43NjkgMTMwNy4wMyAzNzEuMTY4TDEzMzkuODEgNDA5LjUyMkMxMzEwLjEyIDQ0NC4xNjQgMTI2NC45NiA0NjIuNzIzIDEyMTAuNTIgNDYyLjcyM0MxMTA0Ljc0IDQ2Mi43MjMgMTAzNC4yMiAzOTIuODIgMTAzNC4yMiAyOTUuMDc5QzEwMzQuMjIgMTk3Ljk1OCAxMTA0LjEyIDEyOC4wNTUgMTE5OC43NyAxMjguMDU1QzEyOTMuNDIgMTI4LjA1NSAxMzYwLjg0IDE5Ni4xMDIgMTM2MC44NCAyOTYuOTM1Wk0xMTk4Ljc3IDE3OC4xNjJDMTE0MS44NiAxNzguMTYyIDEwOTkuNzkgMjE2LjUxNiAxMDkzLjYxIDI3Mi4xOTFIMTMwMy45M0MxMjk3Ljc1IDIxNy4xMzUgMTI1Ni4zIDE3OC4xNjIgMTE5OC43NyAxNzguMTYyWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik04NzcuNDE0IDQ2Mi43MjNDNzc2LjU4IDQ2Mi43MjMgNzA0LjIwMyAzOTIuODIgNzA0LjIwMyAyOTUuMDc5QzcwNC4yMDMgMTk3LjMzOSA3NzYuNTggMTI4LjA1NSA4NzcuNDE0IDEyOC4wNTVDOTM2LjE4MiAxMjguMDU1IDk4NS4wNTIgMTUyLjE4IDEwMTEuMDMgMTk3Ljk1OEw5NjUuODc1IDIyNy4wMzJDOTQ0Ljg0MiAxOTQuODY1IDkxMi42NzUgMTgwLjAxOCA4NzYuNzk1IDE4MC4wMThDODEyLjQ2IDE4MC4wMTggNzY0LjIwOCAyMjUuMTc2IDc2NC4yMDggMjk1LjA3OUM3NjQuMjA4IDM2Ni4yMiA4MTIuNDYgNDEwLjc1OSA4NzYuNzk1IDQxMC43NTlDOTEyLjY3NSA0MTAuNzU5IDk0NC44NDIgMzk1LjkxMyA5NjUuODc1IDM2My43NDVMMTAxMS4wMyAzOTIuMjAxQzk4NS4wNTIgNDM3Ljk3OCA5MzYuMTgyIDQ2Mi43MjMgODc3LjQxNCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik01NDcuMzk4IDQ2Mi43MjNDNDQ2LjU2NSA0NjIuNzIzIDM3NC4xODggMzkyLjgyIDM3NC4xODggMjk1LjA3OUMzNzQuMTg4IDE5Ny4zMzkgNDQ2LjU2NSAxMjguMDU1IDU0Ny4zOTggMTI4LjA1NUM2MDYuMTY2IDEyOC4wNTUgNjU1LjAzNiAxNTIuMTggNjgxLjAxOCAxOTcuOTU4TDYzNS44NiAyMjcuMDMyQzYxNC44MjcgMTk0Ljg2NSA1ODIuNjU5IDE4MC4wMTggNTQ2Ljc4IDE4MC4wMThDNDgyLjQ0NCAxODAuMDE4IDQzNC4xOTMgMjI1LjE3NiA0MzQuMTkzIDI5NS4wNzlDNDM0LjE5MyAzNjYuMjIgNDgyLjQ0NCA0MTAuNzU5IDU0Ni43OCA0MTAuNzU5QzU4Mi42NTkgNDEwLjc1OSA2MTQuODI3IDM5NS45MTMgNjM1Ljg2IDM2My43NDVMNjgxLjAxOCAzOTIuMjAxQzY1NS4wMzYgNDM3Ljk3OCA2MDYuMTY2IDQ2Mi43MjMgNTQ3LjM5OCA0NjIuNzIzWiIgZmlsbD0iIzA2MkY3RSIvPgogIDxwYXRoIGQ9Ik0zMjkuNTA0IDMwMC44NjlDMzI5LjUwNCAzMzMuNDU0IDMxOS44NDEgMzY1LjMwNyAzMDEuNzM4IDM5Mi40QzI4My42MzUgNDE5LjQ5NCAyNTcuOTA0IDQ0MC42MSAyMjcuOCA0NTMuMDhDMTk3LjY5NSA0NjUuNTUgMTY0LjU2OSA0NjguODEyIDEzMi42MTEgNDYyLjQ1NUMxMDAuNjUyIDQ1Ni4wOTggNzEuMjk1OCA0NDAuNDA3IDQ4LjI1NDggNDE3LjM2NkMyNS4yMTM4IDM5NC4zMjUgOS41MjI3MyAzNjQuOTY5IDMuMTY1NzQgMzMzLjAxMUMtMy4xOTEyNSAzMDEuMDUyIDAuMDcxMzg1MiAyNjcuOTI2IDEyLjU0MTEgMjM3LjgyMUMyNS4wMTA4IDIwNy43MTcgNDYuMTI3NCAxODEuOTg2IDczLjIyMDcgMTYzLjg4M0MxMDAuMzE0IDE0NS43OCAxMzIuMTY3IDEzNi4xMTcgMTY0Ljc1MiAxMzYuMTE3VjE4Ni4zNjZDMTQyLjEwNSAxODYuMzY2IDExOS45NjcgMTkzLjA4MSAxMDEuMTM3IDIwNS42NjNDODIuMzA3NCAyMTguMjQ1IDY3LjYzMTIgMjM2LjEyOCA1OC45NjQ4IDI1Ny4wNTFDNTAuMjk4MyAyNzcuOTczIDQ4LjAzMDcgMzAwLjk5NiA1Mi40NDg5IDMyMy4yMDhDNTYuODY3IDM0NS40MTkgNjcuNzcyNCAzNjUuODIyIDgzLjc4NiAzODEuODM1Qzk5Ljc5OTUgMzk3Ljg0OSAxMjAuMjAyIDQwOC43NTQgMTQyLjQxNCA0MTMuMTcyQzE2NC42MjUgNDE3LjU5IDE4Ny42NDggNDE1LjMyMyAyMDguNTcxIDQwNi42NTZDMjI5LjQ5MyAzOTcuOTkgMjQ3LjM3NiAzODMuMzE0IDI1OS45NTggMzY0LjQ4NEMyNzIuNTQgMzQ1LjY1NCAyNzkuMjU1IDMyMy41MTYgMjc5LjI1NSAzMDAuODY5SDMyOS41MDRaIiBmaWxsPSIjMDYyRjdFIi8+CiAgPHBhdGggZD0iTTE5My4zOTEgMTM2LjExN0gzMjkuNTA2VjE4Ni42OTZIMTkzLjM5MVYxMzYuMTE3WiIgZmlsbD0iIzAwRDJFRSIvPgogIDxwYXRoIGQ9Ik0zMjkuNSAxNDUuNzg5VjI3NS4yMUgyNzguMTc4VjE0NS43ODlIMzI5LjVaIiBmaWxsPSIjMDBEMkVFIi8+CiAgPHBhdGggZD0iTTMyOS41IDMwMS4yNDJWNDYwLjQxNkgyNzguMTc4VjMwMS4yNDJIMzI5LjVaIiBmaWxsPSIjMDYyRjdFIi8+Cjwvc3ZnPgo=" alt="Acceler"><span class="div"></span><img class="cli" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIMAAAA+CAYAAAAIyajNAAAB80lEQVR4nO2bUXKDMAxERSdXaS/Q+58t+elQOiUxLUbaXe37zUzsRM8rA2b5eP+8xzmWwednv//oOJnM+k1QvFVPgBBJESJyZEBa0eY5C1MyIKxIhDlcBpMM5jqWiDwZZrWKypUpnQoRTgazIVMGhXRQZK2Lk+EYLQTMlsHpgMWPejgZxrQRzzL05VdKV8jA1CrapEKEk8FsqJKBKR0U2f3/b9mzICLr0fvVRwgOU9kmOqQD1RNb7xn2QRbsMiyDWamWAbFVKB7TO0S1DAYIBBkQ0+EsdKkQgSEDEkhCpYMig1I6UKZCBI4MCCCIVAqSDErpQAmSDJW0vZzcYhnMCpoMFa3CqfAFmgymEEQZGDeS9KkQgSlDJr7y2IAqA1M6SKRCBK4MpoDuMsis6hkgy8DQKqRkQpYhC6mCngFdBuR0kJMIXYYs5Ar7HxhkQEwHSXkYZDBJWIZvJFf7X2CRAalVyErDIkMWsoU+ApMMCOkgLQuTDFlIF/wVM17Jn31D51Uxlknj3QfjPBtbGsRk8BmDIhBlGJGxd5BPgT1QZUBLhxZyoMqAQAsBtrDKkHmZ2UYKZBkQWkUbESKwZRiBcBNKCnQZXKhE0GUY4XSYCIMMLlQSDDKYJBRkcKuYBIsM7QuVAYsMI5wOE1CRIaLZDaIreAB7CzUKivZ9OAAAAABJRU5ErkJggg==" alt="LVT"></div>
+    <h1 class="rhead-h1">Day 4 Recap<br>AI-Assisted Development Program</h1>
+    <div class="rhead-f">
+      <span class="pill">Day 4 of 4 &middot; 17 July 2026</span>
+      <div class="cover-meta">
+        <span><i></i>Agent Harness</span>
+        <span><i></i>Agent Orchestration</span>
+        <span><i></i>Economies of AI Development</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="start">
+
+  <div class="sec">
+    <div class="eyebrow">What We Covered</div>
+    <h2>Three parts, one closing question.</h2>
+    <p class="sub">Day 3 was about not trusting AI-written code until it earned it. Day 4 zoomed out: what you're actually building around the model (the harness), how far you can push that from one agent to a fleet (orchestration), and what any of this costs you once it's running in production, not just while it's shipping.</p>
+
+  <div class="part">
+    <div class="part-n">01</div>
+    <div class="part-b">
+      <h3>Agent Harness</h3><p class="part-s">The scaffolding you build around the model &mdash; and why it's not optional</p>
+      <ul><li><b>The big idea:</b> Agent = Model + Harness. If you're not the model, you're the harness &mdash; prompts, tools, infrastructure, and control logic, treated as a real artifact: designed, versioned, and reviewed like any other system. It tightens every time the agent slips; each failure becomes a new rule, guardrail, or check.</li><li><b>What the harness includes:</b> prompts &amp; agent files (system prompts, <code>CLAUDE.md</code>, <code>AGENTS.md</code>, skill files, subagent prompts), tools &amp; MCP servers, bundled infrastructure (filesystem, sandbox, browser), orchestration logic (subagent spawning, handoffs, model routing), hooks &amp; middleware (deterministic execution &mdash; compaction, continuation, lint checks), and observability (logs, traces, cost, latency).</li><li><b>Why models need a harness at all:</b> out of the box, models can't maintain durable state across interactions, can't execute the code they write, can't access realtime knowledge beyond training data, and can't set up their own environments. The harness carries all of that.</li><li><b>Most production agent failures come from the harness, not the model</b> &mdash; context rot, tool overload, brittle tool wiring, latency, irrelevant material, weak verification, and missing guardrails are the common failure modes teams actually hit.</li><li><b>The blueprint for an effective harness:</b> context engineering &amp; management, tool orchestration &amp; guardrails, human-in-the-loop (HITL) controls, and lifecycle &amp; state management.</li></ul>
+      <div class="diag"><img src="images/harness-architecture.png" alt="Diagram: Agent wrapped in Harness. Context Injection (prompts, memory, skills, conversation) feeds the Model, which reasons and decides. Control (compaction, orchestration, ralph loops) directs it. Action calls bash, tools, MCPs, with results returning to context. Persist writes/reads filesystem and git. Observe & Verify checks browser screenshots, test results, and logs."><p class="diag-cap">The harness, end to end: context goes in, the model reasons and decides, and everything else &mdash; control, action, persistence, verification &mdash; is scaffolding around it.</p></div>
+      <div class="diag"><img src="images/harness-bridges.png" alt="Diagram: a series of bridges (filesystem+git, bash+code execution, sandboxed environments+tooling, memory files+web search+MCPs, compaction+tool offloading+skills, ralph loops+planning+verification) crossing a canyon from 'what the model can do alone' to durable data, execute code, safe defaults, new knowledge, long context, and long horizon."><p class="diag-cap">Every harness feature is a bridge across a specific thing the model can't do on its own.</p></div>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">02</div>
+    <div class="part-b">
+      <h3>Agent Orchestration</h3><p class="part-s">From one agent to a fleet &mdash; subagents, agent teams &amp; dynamic workflows</p>
+      <ul><li><b>Conductor vs. Orchestrator:</b> a conductor steers one agent synchronously, in the loop the whole time &mdash; pair programming, leveled up. An orchestrator writes the brief once; the fleet clones, branches, codes, tests, and hands back a PR. Effort front-loads onto the spec and back-loads onto review; the middle runs itself. ~90% of engineers already use AI to write code &mdash; the frontier isn't one assistant anymore, it's a fleet.</li><li><b>SubAgents vs. Agent Teams</b> &mdash; the two multi-agent patterns, compared directly: subagents own their context but report results back to the main agent only, with the main agent managing all work (lower token cost, best for focused tasks where only the result matters). Agent teams are fully independent, message each other directly, and self-coordinate via a shared task list (higher token cost, best for work that needs discussion and collaboration). Agent teams are switched on with <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code>.</li><li><b>Dynamic Workflows</b> move the plan out of the conversation and into a rerunnable script Claude writes &mdash; for codebase audits, large migrations, and cross-checked research, at a scale (dozens to hundreds of agents) no single conversation can coordinate turn by turn.</li><li><b>The Factory Model:</b> plan (write specs with acceptance criteria &mdash; your spec is the leverage) &rarr; spawn (create the team) &rarr; monitor (check in every 5&ndash;10 minutes, don't hover) &rarr; verify (verification is the bottleneck, not generation) &rarr; integrate (merge, resolve conflicts) &rarr; retro (update <code>AGENTS.md</code> &mdash; compound learning). Practical limits that keep it running: 3&ndash;5 agents as a WIP sweet spot, a kill criterion (stuck 3+ iterations on the same error &rarr; stop and reassign), and one file, one owner &mdash; never let two agents edit the same file.</li><li><b>Five patterns to start today:</b> subagents for decomposition (zero setup, start here), agent teams for parallelism (lead + 3 teammates via the shared task list), git worktrees for isolation (no merge conflicts), quality gates for trust (plan approval on risky changes, hooks that run tests on completion), and <code>AGENTS.md</code> for compound learning (every session reads it and updates it).</li></ul>
+    </div>
+  </div>
+  <div class="part">
+    <div class="part-n">03</div>
+    <div class="part-b">
+      <h3>Economies of AI Development</h3><p class="part-s">Shipping fast is the cheap part &mdash; running it is where the money goes</p>
+      <ul><li><b>The reframe:</b> the entire AI pitch is velocity, but speed was never the expensive part. The number that matters is Total Cost of Ownership &mdash; not how fast you shipped, but what it costs to keep it alive. CapEx is the one-time upfront cost to build; OpEx is the ongoing cost to run, and it never stops. The shift nobody budgeted for: in AI-assisted work, OpEx is now a token bill.</li><li><b>Vibe coding's hidden debt</b> (low CapEx, high OpEx): token burn (dumping huge files into context creates a prompting loop &mdash; every retry burns tokens), a maintenance tax (ad-hoc prompts produce unstructured code; six months on, an engineer spends days reverse-engineering it to fix one bug), and security remediation (fast code generation means fast vulnerability generation, and a flaw caught in production costs exponentially more than one caught at design).</li><li><b>Agentic engineering's investment</b> (high CapEx, low OpEx): design the API schemas before the code, build deterministic test suites so output gets checked not trusted, and structure the agent's context &mdash; the one that matters most. The payoff: the marginal cost of every feature after that drops off a cliff.</li><li><b>Three levers that actually move the bill:</b> a tight payload (<code>CLAUDE.md</code> plus only the files a task touches, not the whole repo &mdash; the big one), dynamic context (skills and tool calling, MCP servers, pulling context on demand instead of carrying it all), and intelligent model routing (heavy models for requirements/architecture/first implementation, small cheap models for tests/review/CI &mdash; same output quality, a fraction of the cost).</li><li><b>AI amplifies whatever culture it lands in</b> &mdash; it doesn't fix your engineering culture, it scales it, in both directions. For builders: write <code>AGENTS.md</code> first and grow it, put tests and evals before the code. For leaders: the eval is the bar, not the demo &mdash; gate shipping on eval coverage the way you gate deployment on test coverage. For organizations: fund the harness as engineering investment, not overhead &mdash; skip the scaffolding and you buy speed without quality, debt that compounds.</li></ul>
+    </div>
+  </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Check Your Understanding</div>
+    <h2>The one question from the room.</h2>
+    <p class="sub">Day 4 didn't run a scored quiz like the earlier days &mdash; this was the session's own live discussion check instead, put here properly since the deck's own "answer" slide was left blank for the instructor to take live.</p>
+    <div class="pk"><div class="pk-q">Who can explain the difference between an agent, a model, and a harness?</div><div class="pk-a">The <b>model</b> is the one piece that reasons and decides &mdash; that's all it does natively, and it's the only part that's actually "AI." The <b>harness</b> is everything built around it: the prompts and context you feed in, the tools and MCPs it can call, the control logic that directs it (compaction, orchestration, ralph loops), where it persists state (filesystem, git), and how its work gets observed and verified (test runs, logs, screenshots). The <b>agent</b> is the two together &mdash; model plus harness, shipped as one system. The line from today's deck: if you're not the model, you're the harness.</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Key Takeaways</div>
+    <h2>If you remember six things.</h2>
+    <div class='tks'><div class="tk"><div class="tk-h">If you're not the model, you're the harness</div><p>Prompts, tools, infrastructure, and control logic are a real system &mdash; designed, versioned, and reviewed, not an afterthought around the model.</p></div><div class="tk"><div class="tk-h">Most agent failures come from the harness, not the model</div><p>Context rot, tool overload, brittle wiring, and missing guardrails are the failure modes that actually show up in production.</p></div><div class="tk"><div class="tk-h">Subagents report back; teammates talk to each other</div><p>That single architectural difference is what decides token cost and what kind of work each pattern is actually good for.</p></div><div class="tk"><div class="tk-h">Verification is the bottleneck, not generation</div><p>In the Factory Model, the human's job shifts from writing code to writing specs and checking output &mdash; that's where the real time goes now.</p></div><div class="tk"><div class="tk-h">Context is a line item, not a technical detail</div><p>A tight payload, dynamic context, and model routing are the three levers that actually move a token bill &mdash; and they compound.</p></div><div class="tk"><div class="tk-h">AI scales your culture, it doesn't fix it</div><p>Good engineering discipline gets amplified by AI. So does bad discipline. The harness is what decides which one you get.</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Cheat Sheet</div>
+    <h2>Commands from today.</h2>
+    <table><tr><td><code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code></td><td>Enable agent teams (in <code>settings.json</code> or your environment)</td></tr><tr><td><code>/agents</code></td><td>List every available subagent &mdash; project, personal, and built-in</td></tr><tr><td><code>ultracode</code> (in a prompt) / <code>/effort ultracode</code></td><td>Have Claude write and run a dynamic workflow for the task, instead of working turn by turn</td></tr><tr><td><code>/workflows</code></td><td>See running and completed dynamic workflows, drill into a phase or agent</td></tr><tr><td><code>/context</code></td><td>Read the context window meter &mdash; what's actually loaded right now</td></tr><tr><td><code>/cost</code></td><td>Read token spend for the session, including cache-read savings</td></tr><tr><td><code>/plugin marketplace add</code> &middot; <code>/plugin install</code></td><td>Discover and install ready-made plugins that extend Claude Code</td></tr><tr><td>Git worktrees</td><td>Give each parallel agent its own worktree &mdash; no merge conflicts, clean integration</td></tr></table>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Hands-On Labs</div>
+    <h2>The four demos, if you want to re-run them.</h2>
+    <p class="sub">All four live in one repo &mdash; TaskFlow, a deliberately small Express API with real seeded bugs. Same repo covers all four program days.</p>
+    <div class="pk"><div class="pk-q">Get the code</div><div class="pk-a"><p>Clone just today's demo out of the shared repo:</p><p><code>git clone --filter=blob:none --no-checkout https://github.com/nsr-19/acceler-lvt-labs.git<br>cd acceler-lvt-labs<br>git sparse-checkout init --cone<br>git sparse-checkout set lvt-day4-code-demo<br>git checkout main</code></p><p>Then <code>cd lvt-day4-code-demo && npm install && npm test</code> &mdash; 7 tests, all green on the baseline. Node.js 18+ required; dynamic workflows need Claude Code v2.1.154+ on a paid plan (enable via the <i>Dynamic workflows</i> row in <code>/config</code> on Pro).</p></div></div>
+    <div class="pk"><div class="pk-q">Demos 1&ndash;3: SubAgents &rarr; Agent Teams &rarr; Dynamic Workflows</div><div class="pk-a"><p>Progressive, run in order &mdash; each guide lives at <code>demos/0{1,2,3}-.../GUIDE.md</code> in the repo. Demo 1 introduces delegation. Demo 2 removes the single-orchestrator constraint (agent teams, ~25 min). Demo 3 moves the plan out of the conversation into a rerunnable script (~15 min), plus a plugins &amp; worktrees bonus.</p></div></div>
+    <div class="pk"><div class="pk-q">Demo 4: Supermemory &mdash; compound learning across sessions</div><div class="pk-a"><p>A real, installable Claude Code plugin (<code>supermemoryai/claude-supermemory</code>) that automates the <code>CLAUDE.md</code> Learned Rules pattern automatically and across sessions, via a <code>SessionStart</code> hook (injects relevant memories before you type anything) and a <code>PostToolUse</code> hook (captures every edit in the background). Runs self-hosted and free &mdash; no account, nothing leaves your machine. The lab has you fix the same PATCH bug from Demo 2 a second time, save the rule with <code>/supermemory:save</code>, then open a completely fresh session and confirm it answers correctly without being told anything. Guide: <a href="https://github.com/nsr-19/acceler-lvt-labs/blob/main/lvt-day4-code-demo/demos/04-supermemory/GUIDE.md" target="_blank" rel="noopener">demos/04-supermemory/GUIDE.md</a>.</p></div></div>
+    <div class="pk"><div class="pk-q">Token Budget Lab &mdash; cut the bill</div><div class="pk-a"><p>Core lab (~30 min) measures three real levers &mdash; tight payload, prompt caching, model routing &mdash; on the same TaskFlow repo, using nothing but <code>/context</code> and <code>/cost</code>: ~60&ndash;70% fewer tokens on the naive-vs-tight comparison. An optional stretch (~20 min) grows the repo for real and re-measures at scale, then fans the same audit out with a dynamic workflow to turn the ratio into an actual priced number.</p></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Questions We Parked or Rushed</div>
+    <h2>The answers we owed you.</h2>
+    <p class="sub">Five questions, properly answered &mdash; some got a fast live answer worth writing down cleanly, the rest genuinely didn't get one on the day.</p>
+    <div class="pk"><div class="pk-q">Is Claude Code's &ldquo;rules&rdquo; folder something we're covering today &mdash; what do you actually use it for?</div><div class="pk-a">This got set aside for time during the session, so here's the proper answer. <code>.claude/rules/</code> is a real, current part of the <code>.claude</code> directory, separate from the single <code>CLAUDE.md</code> file: topic-scoped instruction files instead of one growing document. A rule with no <code>paths:</code> frontmatter loads at session start, same as <code>CLAUDE.md</code>. A rule <i>with</i> <code>paths:</code> frontmatter only loads when Claude actually reads a matching file &mdash; so you can scope a convention to, say, just your frontend or just your test files, and it costs nothing on unrelated tasks. The trigger to reach for it: once <code>CLAUDE.md</code> creeps past roughly 200 lines, start moving sections into rules instead of letting one file keep growing. Like <code>CLAUDE.md</code>, a rule is guidance Claude reads, not something Claude Code enforces &mdash; for guaranteed behavior, that's still hooks or permissions.</div></div><div class="pk"><div class="pk-q">As everything changes so rapidly, how do you stay on top of the latest changes?</div><div class="pk-a">Claude Code ships a proper changelog at <code>code.claude.com/docs/en/changelog</code> &mdash; every release, timestamped, with its new features, improvements, and fixes listed in order. That's the single fastest way to know what shipped and when, and it's worth bookmarking over any secondhand summary. The rest of the docs reinforce it: pages are actively version-tagged against specific releases (you'll see notes like &ldquo;as of v2.1.199&rdquo; throughout this very recap's own citations), so a page read months ago may already be stale on one specific behavior even if the general concept still holds &mdash; check the version tag, not just the topic.</div></div><div class="pk"><div class="pk-q">Any ideas or resources for applying this to Product Management?</div><div class="pk-a">Three pieces of today's content carry over to product work directly. The Factory Model's Plan step &mdash; writing specs with acceptance criteria before any agent is spawned &mdash; is a PM's actual leverage point, not an engineering-only habit. The Leaders playbook's &ldquo;the eval is the bar, not the demo&rdquo; framing gives you a rubric to hold a feature to, the same way an engineering team gates a release on test coverage. And the CapEx/OpEx/TCO framing from Part 3 is ready-made vocabulary for prioritization conversations that go beyond &ldquo;how fast can we ship this.&rdquo; The room's own PM landed on a similar read live: Ash Roberts named the agent-orchestration portion specifically, seeing real potential for building agents around discovery, market research, and pricing work.</div></div><div class="pk"><div class="pk-q">What's the actual advantage of running a code reviewer as a subagent instead of a skill?</div><div class="pk-a">A skill runs inside your existing session, using the same context window, which makes it the cheaper option for smaller, focused tasks. A subagent spins up its own disposable context window instead &mdash; it reads the code, does the review, works through everything on its own, and sends back only a summary. That costs more tokens for the separate instance, but your main conversation never has to hold the reviewed files itself. One practical wrinkle: which of the two actually runs depends on how you phrase the request &mdash; a plain prose prompt routes to the subagent automatically, but prefacing it with <code>@code-reviewer</code> doesn't.</div></div><div class="pk"><div class="pk-q">What does &ldquo;ultracode&rdquo; actually do?</div><div class="pk-a">Ultracode is a session mode, not a formatter or a one-off command. Turn it on and Claude Code defaults to fanning work out across multi-agent workflows, spending tokens freely to chase the most exhaustive, verified answer instead of the fastest one. Off, it stays lean and only does that when you explicitly ask for it. Mechanically, include the keyword <code>ultracode</code> in a prompt, or run <code>/effort ultracode</code> to make it the session default, and Claude writes and runs a dynamic workflow for that task instead of working through it turn by turn. Toggle it via <code>/config</code> &rarr; <i>Dynamic workflows</i>; if it triggers by accident, <code>Option+W</code> (Mac) or <code>Alt+W</code> (Windows/Linux) right after typing dismisses it.</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Wrapping Up</div>
+    <h2>That's the program.</h2>
+    <p class="sub">Four days, one throughline: direct the tool with discipline, build gates you can trust, then scale both of those from one session to a fleet without losing track of what it costs.</p>
+    <div class='pps'>
+      <div class="pp"><div class="pp-h">Push your Day 4 work to GitHub</div><p>Same habit as every day before this &mdash; this is what you submit, and today closes it out.</p></div>
+      <div class="pp"><div class="pp-h">Run the Token Budget Lab on your own repo</div><p>The ratio is the lesson, not the exact percentage &mdash; re-run Steps 1&ndash;2 on a task from your own codebase and see if it holds.</p></div>
+      <div class="pp"><div class="pp-h">Pick one pattern from today, not all five</div><p>Subagents for decomposition is the zero-setup starting point if you're not sure which to try first.</p></div>
+      <div class="pp"><div class="pp-h">Take the self-paced cost course</div><p>The instructors called this out explicitly as something to do after the program &mdash; it's in Additional Resources below.</p></div>
+    </div>
+    <div class="callout">
+      <div class="callout-h">Compound learning doesn't stop when the program does.</div>
+      <p>The whole point of <code>AGENTS.md</code>, Supermemory, and the beads pattern from today is that what you learn on one task should still be there the next time you open the repo. Keep updating it after this program the same way you were asked to during it &mdash; that's the habit that actually compounds, not the four days themselves.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Session Resources</div>
+    <h2>Everything from Day 4, in one place.</h2>
+    <p class="sub">The slide deck, both lab guides, and the code from the Day 4 live demos.</p>
+    <div class='mat'>
+      <div class="mt"><div><div class="mt-l">Day 4 Slides &amp; Materials</div><div class="mt-d">The full Day 4 presentation</div></div><a class="lnk" href="important-docs/LVT%20Day_4%20Live%20Class%20Slides.pdf" download="LVT Day_4 Live Class Slides.pdf">Download deck &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Session GitHub Repo</div><div class="mt-d">Code from all four days &mdash; today's demos are under <code>lvt-day4-code-demo</code></div></div><a class="lnk" href="https://github.com/nsr-19/acceler-lvt-labs/tree/main/lvt-day4-code-demo" target="_blank" rel="noopener">View repo &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Supermemory Guide</div><div class="mt-d">The full compound-learning lab, step by step</div></div><a class="lnk" href="important-docs/Supermemory%20GUIDE.docx.pdf" download="Supermemory GUIDE.pdf">Download PDF &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">Token Budget Lab At Scale Guide</div><div class="mt-d">Core lab plus the optional at-scale stretch</div></div><a class="lnk" href="important-docs/Token%20Budget%20Lab%20At%20Scale%20_%20GUIDE.docx.pdf" download="Token Budget Lab At Scale GUIDE.pdf">Download PDF &rarr;</a></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">Additional Resources</div>
+    <h2>Take this further, on your own time.</h2>
+    <p class="sub">Called out explicitly in the session as worth sharing post-class.</p>
+    <div class='mat'>
+      <div class="mt"><div><div class="mt-l">AI Cost Playbook &mdash; Learner Guide</div><div class="mt-d">Six patterns that cut an LLM API bill 60&ndash;80% &mdash; real code, real cost math, eight modules</div></div><a class="lnk" href="https://lvt-ai-cost-lab.vercel.app/" target="_blank" rel="noopener">Open guide &rarr;</a></div>
+      <div class="mt"><div><div class="mt-l">AI Cost for Engineers &mdash; Short Course</div><div class="mt-d">Self-paced, do it after the session &mdash; covers billing, the context trap, caching, and model routing</div></div><a class="lnk" href="https://ai-cost-for-engineers.vercel.app/" target="_blank" rel="noopener">Start course &rarr;</a></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="eyebrow">More From the Chat</div>
+    <h2>What came up in the chat.</h2>
+    <p class="sub">A mix of what learners and the Acceler team dropped in the Zoom chat during Day 4 &mdash; worth keeping around.</p>
+    <table><tr><td><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool" target="_blank" rel="noopener">Memory Tool docs</a></td><td>Anthropic's official reference &mdash; came up answering whether harness memory is embeddings-based or natural language</td></tr><tr><td><a href="https://code.claude.com/docs/en/claude-directory" target="_blank" rel="noopener">The .claude directory, explained</a></td><td>What lives in <code>.claude/</code> and why &mdash; shared after a learner admitted "it's hard not to look at the files"</td></tr><tr><td><a href="https://github.com/mattpocock/skills/blob/main/skills/productivity/handoff/SKILL.md" target="_blank" rel="noopener">handoff skill</a></td><td>A short-term-memory skill a learner called out as genuinely useful for context handoff between sessions</td></tr><tr><td><a href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">OpenAI Tokenizer</a></td><td>Quick way to see how text actually splits into tokens &mdash; shared during the token-economics discussion</td></tr><tr><td><a href="https://mem0.ai/" target="_blank" rel="noopener">mem0</a></td><td>A YC-backed alternative to Supermemory for persistent agent memory, flagged by a learner mid-lab</td></tr><tr><td><a href="https://blog.pragmaticengineer.com/the-pulse-what-can-we-learn-from-buns-rapid-rust-rewrite-with-ai/" target="_blank" rel="noopener">What Bun's Rust rewrite teaches about AI cost</a></td><td>A real-world TCO case study &mdash; Bun's Zig-to-Rust rewrite via Fable, priced in actual tokens and dollars</td></tr></table>
+  </div>
+
+</div>
+
+<div class="foot-bar">
+  <p>That's the program. Questions? The Slack group stays open &mdash; ask there and everyone learns from the answer.</p>
+  <span>Day 4 Recap &mdash; AI-Assisted Development Program for LVT &middot; Shivam Patel &middot; Acceler</span>
+</div>
+
+</body></html>
