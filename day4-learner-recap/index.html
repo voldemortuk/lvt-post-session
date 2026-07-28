@@ -161,7 +161,7 @@ html{scroll-behavior:smooth}
     </div>
   </nav>
 
-  <div class="sec" id="covered">
+  <div class="sec" id="covered" data-cmt="What We Covered">
     <div class="eyebrow">What We Covered</div>
     <h2>Three parts, one closing question.</h2>
     <p class="sub">Day 3 was about not trusting AI-written code until it earned it. Day 4 zoomed out: what you're actually building around the model (the harness), how far you can push that from one agent to a fleet (orchestration), and what any of this costs you once it's running in production, not just while it's shipping.</p>
@@ -191,26 +191,26 @@ html{scroll-behavior:smooth}
   </div>
   </div>
 
-  <div class="sec" id="understanding">
+  <div class="sec" id="understanding" data-cmt="Check Your Understanding">
     <div class="eyebrow">Check Your Understanding</div>
     <h2>The one question from the room.</h2>
     <p class="sub">Day 4 didn't run a scored quiz like the earlier days; this was the session's own live discussion check instead, put here properly since the deck's own "answer" slide was left blank for the instructor to take live.</p>
     <div class="pk"><div class="pk-q">Who can explain the difference between an agent, a model, and a harness?</div><div class="pk-a">The <b>model</b> is the one piece that reasons and decides: that's all it does natively, and it's the only part that's actually "AI." The <b>harness</b> is everything built around it: the prompts and context you feed in, the tools and MCPs it can call, the control logic that directs it (compaction, orchestration, ralph loops), where it persists state (filesystem, git), and how its work gets observed and verified (test runs, logs, screenshots). The <b>agent</b> is the two together: model plus harness, shipped as one system. The line from today's deck: if you're not the model, you're the harness.</div></div>
   </div>
 
-  <div class="sec" id="takeaways">
+  <div class="sec" id="takeaways" data-cmt="Key Takeaways">
     <div class="eyebrow">Key Takeaways</div>
     <h2>If you remember six things.</h2>
     <div class='tks'><div class="tk"><div class="tk-h">If you're not the model, you're the harness</div><p>Prompts, tools, infrastructure, and control logic are a real system: designed, versioned, and reviewed, not an afterthought around the model.</p></div><div class="tk"><div class="tk-h">Most agent failures come from the harness, not the model</div><p>Context rot, tool overload, brittle wiring, and missing guardrails are the failure modes that actually show up in production.</p></div><div class="tk"><div class="tk-h">Subagents report back; teammates talk to each other</div><p>That single architectural difference is what decides token cost and what kind of work each pattern is actually good for.</p></div><div class="tk"><div class="tk-h">Verification is the bottleneck, not generation</div><p>In the Factory Model, the human's job shifts from writing code to writing specs and checking output: that's where the real time goes now.</p></div><div class="tk"><div class="tk-h">Context is a line item, not a technical detail</div><p>A tight payload, dynamic context, and model routing are the three levers that actually move a token bill, and they compound.</p></div><div class="tk"><div class="tk-h">AI amplifies your culture rather than fixing it</div><p>Good engineering discipline gets amplified by AI. So does bad discipline. The harness is what decides which one you get.</p></div></div>
   </div>
 
-  <div class="sec" id="cheatsheet">
+  <div class="sec" id="cheatsheet" data-cmt="Cheat Sheet">
     <div class="eyebrow">Cheat Sheet</div>
     <h2>Commands from today.</h2>
     <table><tr><td><code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code></td><td>Enable agent teams (in <code>settings.json</code> or your environment)</td></tr><tr><td><code>/agents</code></td><td>List every available subagent: project, personal, and built-in</td></tr><tr><td><code>ultracode</code> (in a prompt) / <code>/effort ultracode</code></td><td>Have Claude write and run a dynamic workflow for the task, instead of working turn by turn</td></tr><tr><td><code>/workflows</code></td><td>See running and completed dynamic workflows, drill into a phase or agent</td></tr><tr><td><code>/context</code></td><td>Read the context window meter: what's actually loaded right now</td></tr><tr><td><code>/cost</code></td><td>Read token spend for the session, including cache-read savings</td></tr><tr><td><code>/plugin marketplace add</code> &middot; <code>/plugin install</code></td><td>Discover and install ready-made plugins that extend Claude Code</td></tr><tr><td>Git worktrees</td><td>Give each parallel agent its own worktree: no merge conflicts, clean integration</td></tr></table>
   </div>
 
-  <div class="sec" id="handson">
+  <div class="sec" id="handson" data-cmt="Hands-On Labs">
     <div class="eyebrow">Hands-On Labs</div>
     <h2>The four demos, if you want to re-run them.</h2>
     <p class="sub">All four live in one repo: TaskFlow, a deliberately small Express API with real seeded bugs. Same repo covers all four program days.</p>
@@ -220,14 +220,14 @@ html{scroll-behavior:smooth}
     <div class="pk"><div class="pk-q">Token Budget Lab: cut the bill</div><div class="pk-a"><p>Core lab (~30 min) measures three real levers (tight payload, prompt caching, model routing) on the same TaskFlow repo, using nothing but <code>/context</code> and <code>/cost</code>: ~60&ndash;70% fewer tokens on the naive-vs-tight comparison. An optional stretch (~20 min) grows the repo for real and re-measures at scale, then fans the same audit out with a dynamic workflow to turn the ratio into an actual priced number.</p></div></div>
   </div>
 
-  <div class="sec" id="questions">
+  <div class="sec" id="questions" data-cmt="Questions We Parked">
     <div class="eyebrow">Questions We Parked or Rushed</div>
     <h2>The answers we owed you.</h2>
     <p class="sub">Five questions, properly answered: some got a fast live answer worth writing down cleanly, the rest genuinely didn't get one on the day.</p>
     <div class="qa"><div class="qa-rail"><div class="qa-badge">Q1</div></div><div class="qa-body"><div class="qa-q">Is Claude Code's &ldquo;rules&rdquo; folder something we're covering today, and what do you actually use it for?</div><div class="qa-a"><span class="lead">A</span>This got set aside for time during the session, so here's the proper answer. <code>.claude/rules/</code> is a real, current part of the <code>.claude</code> directory, separate from the single <code>CLAUDE.md</code> file: topic-scoped instruction files instead of one growing document. A rule with no <code>paths:</code> frontmatter loads at session start, same as <code>CLAUDE.md</code>. A rule <i>with</i> <code>paths:</code> frontmatter only loads when Claude actually reads a matching file, so you can scope a convention to, say, just your frontend or just your test files, and it costs nothing on unrelated tasks. The trigger to reach for it: once <code>CLAUDE.md</code> creeps past roughly 200 lines, start moving sections into rules instead of letting one file keep growing. Like <code>CLAUDE.md</code>, a rule is guidance Claude reads, not something Claude Code enforces; for guaranteed behavior, that's still hooks or permissions.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q2</div></div><div class="qa-body"><div class="qa-q">As everything changes so rapidly, how do you stay on top of the latest changes?</div><div class="qa-a"><span class="lead">A</span>Claude Code ships a proper changelog at <code>code.claude.com/docs/en/changelog</code>: every release, timestamped, with its new features, improvements, and fixes listed in order. That's the single fastest way to know what shipped and when, and it's worth bookmarking over any secondhand summary. The rest of the docs reinforce it: pages are actively version-tagged against specific releases (you'll see notes like &ldquo;as of v2.1.199&rdquo; throughout this very recap's own citations), so a page read months ago may already be stale on one specific behavior even if the general concept still holds. Check the version tag, not just the topic.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q3</div></div><div class="qa-body"><div class="qa-q">Any ideas or resources for applying this to Product Management?</div><div class="qa-a"><span class="lead">A</span>Three pieces of today's content carry over to product work directly. The Factory Model's Plan step, writing specs with acceptance criteria before any agent is spawned, is a PM's actual leverage point, not an engineering-only habit. The Leaders playbook's &ldquo;the eval is the bar, not the demo&rdquo; framing gives you a rubric to hold a feature to, the same way an engineering team gates a release on test coverage. And the CapEx/OpEx/TCO framing from Part 3 is ready-made vocabulary for prioritization conversations that go beyond &ldquo;how fast can we ship this.&rdquo; The room's own PM landed on a similar read live: Ash Roberts named the agent-orchestration portion specifically, seeing real potential for building agents around discovery, market research, and pricing work.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q4</div></div><div class="qa-body"><div class="qa-q">What's the actual advantage of running a code reviewer as a subagent instead of a skill?</div><div class="qa-a"><span class="lead">A</span>A skill runs inside your existing session, using the same context window, which makes it the cheaper option for smaller, focused tasks. A subagent spins up its own disposable context window instead: it reads the code, does the review, works through everything on its own, and sends back only a summary. That costs more tokens for the separate instance, but your main conversation never has to hold the reviewed files itself. One practical wrinkle: which of the two actually runs depends on how you phrase the request: a plain prose prompt routes to the subagent automatically, but prefacing it with <code>@code-reviewer</code> doesn't.</div></div></div><div class="qa"><div class="qa-rail"><div class="qa-badge">Q5</div></div><div class="qa-body"><div class="qa-q">What does &ldquo;ultracode&rdquo; actually do?</div><div class="qa-a"><span class="lead">A</span>Ultracode is a session mode, not a formatter or a one-off command. Turn it on and Claude Code defaults to fanning work out across multi-agent workflows, spending tokens freely to chase the most exhaustive, verified answer instead of the fastest one. Off, it stays lean and only does that when you explicitly ask for it. Mechanically, include the keyword <code>ultracode</code> in a prompt, or run <code>/effort ultracode</code> to make it the session default, and Claude writes and runs a dynamic workflow for that task instead of working through it turn by turn. Toggle it via <code>/config</code> &rarr; <i>Dynamic workflows</i>; if it triggers by accident, <code>Option+W</code> (Mac) or <code>Alt+W</code> (Windows/Linux) right after typing dismisses it.</div></div></div>
   </div>
 
-  <div class="sec" id="wrapup">
+  <div class="sec" id="wrapup" data-cmt="Wrapping Up">
     <div class="eyebrow">Wrapping Up</div>
     <h2>That's the program.</h2>
     <p class="sub">Four days, one throughline: direct the tool with discipline, build gates you can trust, then scale both of those from one session to a fleet without losing track of what it costs.</p>
@@ -243,7 +243,7 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
-  <div class="sec" id="assessment">
+  <div class="sec" id="assessment" data-cmt="Post Program Assessment">
     <div class="eyebrow">Post Program Assessment</div>
     <h2>Check your answers.</h2>
     <p class="sub">All 10 multiple-choice questions and both subjective prompts from the post-program assessment, with the full solution and reasoning for each, not just the correct letter.</p>
@@ -252,7 +252,7 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
-  <div class="sec" id="resources">
+  <div class="sec" id="resources" data-cmt="Session Resources">
     <div class="eyebrow">Session Resources</div>
     <h2>Everything from Day 4, in one place.</h2>
     <p class="sub">The slide deck, both lab guides, and the code from the Day 4 live demos.</p>
@@ -264,7 +264,7 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
-  <div class="sec" id="additional">
+  <div class="sec" id="additional" data-cmt="Additional Resources">
     <div class="eyebrow">Additional Resources</div>
     <h2>Take this further, on your own time.</h2>
     <p class="sub">Called out explicitly in the session as worth sharing post-class.</p>
@@ -274,7 +274,7 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
-  <div class="sec" id="chat">
+  <div class="sec" id="chat" data-cmt="From the Chat">
     <div class="eyebrow">More From the Chat</div>
     <h2>What came up in the chat.</h2>
     <p class="sub">A mix of what learners and the Acceler team dropped in the Zoom chat during Day 4, worth keeping around.</p>
@@ -353,5 +353,9 @@ html{scroll-behavior:smooth}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
+
+<script>window.COMMENTS_DECK_ID='lvt_day4_learner_recap';</script>
+<script src="supabase-config.js"></script>
+<script type="module" src="comments.js"></script>
 
 </body></html>
