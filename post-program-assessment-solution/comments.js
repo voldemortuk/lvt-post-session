@@ -244,7 +244,7 @@ function loadConfig() {
     overlay.classList.add('on');
     panel.classList.add('on');
     loadSlide();
-    setTimeout(function () { (sessionAuthor ? bodyEl : nameEl).focus(); }, 50);
+    setTimeout(function () { var el = sessionAuthor ? bodyEl : nameEl; if (el) el.focus(); }, 50);
   }
   function closePanel() {
     panelOpen = false;
